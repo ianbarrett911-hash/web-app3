@@ -510,6 +510,9 @@ function renderMainContent(page) {
           <button id="subscribeBtn" class="inline-block px-6 py-2 bg-yellow-400 text-blue-900 font-bold rounded-lg shadow hover:bg-yellow-300 transition focus:outline focus:outline-2 focus:outline-blue-700" aria-label="Subscribe to Weekly AI Insights">
             Subscribe
           </button>
+          <button id="viewArchiveBtn" class="inline-block px-6 py-2 bg-indigo-100 text-blue-900 font-bold rounded-lg shadow hover:bg-indigo-200 transition focus:outline focus:outline-2 focus:outline-blue-700" aria-label="View previous weekly articles">
+            View Archive
+          </button>
         </div>
       </div>
     </article>
@@ -1351,6 +1354,23 @@ function attachSidebarListeners() {
       setTimeout(updateSidebarSingularityCountdown, 0);
     };
   }
+  const archiveBtn = document.getElementById('viewArchiveBtn');
+  if (archiveBtn) {
+    archiveBtn.onclick = e => {
+      e.preventDefault();
+      renderMainContent('Weekly Archive');
+      setTimeout(updateSidebarSingularityCountdown, 0);
+      // Add a simple handler to return to dashboard from archive page
+      setTimeout(() => {
+        const back = document.getElementById('backToDashboardFromArchive');
+        if (back) back.onclick = evt => { evt.preventDefault(); renderMainContent(); };
+        // Enable clicking items in archive to open weekly post in modal
+        document.querySelectorAll('#weekly-archive-list [data-weekly-index]')?.forEach(btn => {
+          btn.addEventListener('click', () => openWeeklyModal(Number(btn.getAttribute('data-weekly-index')), btn));
+        });
+      }, 0);
+    };
+  }
 }
 
 // --- CV Builder initialization (runs after category page render) ---
@@ -1733,6 +1753,54 @@ function openArticleModal(idx, openerEl) {
   }
 }
 
+// Open a Weekly Archive post in the shared article modal UI
+import { weeklyPosts } from './data/weeklyArchive.js';
+function openWeeklyModal(idx, openerEl) {
+  const post = weeklyPosts[idx];
+  const articleModal = document.getElementById('articleModal');
+  const articleModalTitle = document.getElementById('articleModalTitle');
+  const articleModalContent = document.getElementById('articleModalContent');
+  const articleSocialShare = document.getElementById('articleSocialShare');
+  const articleQuizContainer = document.getElementById('articleQuizContainer');
+  if (!post || !articleModal || !articleModalTitle || !articleModalContent) return;
+
+  articleModalTitle.textContent = post.title;
+  const dateStr = new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  articleModalContent.innerHTML = `<p class="text-sm text-blue-700 mb-2">${dateStr}</p>` + post.content;
+  articleSocialShare.innerHTML = '';
+  if (articleQuizContainer) articleQuizContainer.innerHTML = '';
+  articleModal.classList.remove('hidden');
+  articleModal.__lastOpener = openerEl || null;
+  (articleModalTitle || document.getElementById('closeArticleModal')).focus();
+  trapFocus(articleModal);
+
+  // Update URL and meta tags (weekly route)
+  history.pushState({ weekly: idx }, '', `/weekly/${idx}`);
+  document.title = `${post.title} | Humanity, Society and AI`;
+  let metaDesc = document.querySelector('meta[name="description"]');
+  if (!metaDesc) { metaDesc = document.createElement('meta'); metaDesc.name = 'description'; document.head.appendChild(metaDesc); }
+  metaDesc.content = post.summary || '';
+  const setMetaProperty = (prop, value) => {
+    let el = document.querySelector(`meta[property="${prop}"]`);
+    if (!el) { el = document.createElement('meta'); el.setAttribute('property', prop); document.head.appendChild(el); }
+    el.content = value || '';
+  };
+  setMetaProperty('og:title', post.title);
+  setMetaProperty('og:description', post.summary || '');
+  setMetaProperty('og:url', window.location.origin + `/weekly/${idx}`);
+  const setMetaName = (name, value) => {
+    let el = document.querySelector(`meta[name="${name}"]`);
+    if (!el) { el = document.createElement('meta'); el.setAttribute('name', name); document.head.appendChild(el); }
+    el.content = value || '';
+  };
+  setMetaName('twitter:title', post.title);
+  setMetaName('twitter:description', post.summary || '');
+  // Canonical
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
+  canonical.href = window.location.origin + `/weekly/${idx}`;
+}
+
 // --- Quiz modal close "×" button logic ---
 setTimeout(() => {
   const closeQuizModal = document.getElementById('closeQuizModal');
@@ -1819,10 +1887,14 @@ setTimeout(() => {
 // --- Handle browser navigation (back/forward) and direct links ---
 window.addEventListener('popstate', (event) => {
   const path = window.location.pathname;
-  const match = path.match(/^\/article\/(\d+)/);
-  if (match) {
-    const idx = match[1];
+  const matchArticle = path.match(/^\/article\/(\d+)/);
+  const matchWeekly = path.match(/^\/weekly\/(\d+)/);
+  if (matchArticle) {
+    const idx = matchArticle[1];
     openArticleModal(idx, null);
+  } else if (matchWeekly) {
+    const idx = matchWeekly[1];
+    openWeeklyModal(idx, null);
   } else {
     // Close modal and reset meta tags
     const articleModal = document.getElementById('articleModal');

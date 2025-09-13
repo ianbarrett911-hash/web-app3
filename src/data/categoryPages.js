@@ -1,4 +1,31 @@
+import { weeklyPosts } from './weeklyArchive.js';
+
 export const categoryPages = {
+"Weekly Archive": {
+  title: "Weekly AI Insights – Archive",
+  content: `
+    <section class="mb-10" aria-labelledby="weekly-archive-title">
+      <div class="rounded-3xl bg-white/95 shadow-2xl p-8">
+        <h2 id="weekly-archive-title" class="text-3xl font-extrabold text-blue-900 mb-4">Previous Weekly Articles</h2>
+        <p class="text-blue-900 mb-4">Browse past Weekly AI Insights. Click a title to read.</p>
+        <div id="weekly-archive-list">
+          ${weeklyPosts.map((p, i) => `
+            <article class="mb-6 p-4 bg-white rounded shadow">
+              <header class="flex items-center justify-between mb-2">
+                <button type="button" class="text-left underline text-blue-700 hover:text-yellow-600 font-semibold" data-weekly-index="${i}">${p.title}</button>
+                <time class="text-sm text-gray-600">${new Date(p.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time>
+              </header>
+              <p class="text-gray-800">${p.summary}</p>
+            </article>
+          `).join('')}
+        </div>
+        <div class="mt-6">
+          <button id="backToDashboardFromArchive" class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Back to Dashboard</button>
+        </div>
+      </div>
+    </section>
+  `
+},
 "AI / AGM / ASI": {
   title: "Artificial Intelligence (AI), AGI & ASI",
   content: `
@@ -1163,7 +1190,8 @@ Future: {
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-white rounded-xl p-4 shadow">
               <h4 class="font-semibold mb-2">Policy one-pager (short)</h4>
-              <p class="text-sm mb-2">A concise brief you can customise for internal circulation or public consultation.</p>
+              <p class="text-sm mb-2">A concise brief you can customise for internal circulation or public consultation.</p>              git config user.name "Your Name"
+              git config user.email "you@example.com"
               <div class="flex gap-2">
                 <button onclick="gov_copyTemplate('policy-short')" class="px-3 py-1 bg-blue-700 text-white rounded">Copy</button>
                 <button onclick="gov_downloadTemplate('policy-short')" class="px-3 py-1 bg-green-600 text-white rounded">Download</button>
