@@ -7,7 +7,8 @@
     "dev": "vite",
   "build": "vite build",
   "preview": "vite preview --port 5173",
-  "generate:pdfs": "node tools/generate-pdfs.js"
+  "generate:pdfs": "node tools/generate-pdfs.js",
+  "generate:sitemap": "node tools/generate-sitemap.js"
   },
   "keywords": [],
   "author": "",

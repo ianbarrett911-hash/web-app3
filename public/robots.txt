@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://your-site.com/sitemap.xml
+Sitemap: https://humanity-society-ai.com/sitemap.xml
+# Preferred host (informational for some crawlers): humanity-society-ai.com
 # Disallow any private or staging paths as needed
 # Disallow: /admin

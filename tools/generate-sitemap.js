@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 // Import the articles data
 import { articles } from '../src/data/articles.js';
 
-const siteUrl = process.env.SITE_URL || 'https://your-site.com';
+const siteUrl = process.env.SITE_URL || 'https://humanity-society-ai.com';
 const outDir = path.join(__dirname, '..', 'public');
 const outPath = path.join(outDir, 'sitemap.xml');
 
