@@ -303,20 +303,7 @@ document.getElementById('root').innerHTML = `
         </div>
       </div>
     </div>
-  <div id="subscribeModal" class="fixed inset-0 z-50 bg-black/50 hidden overflow-auto" role="dialog" aria-modal="true" aria-labelledby="subscribeHeading">
-      <div class="flex items-center justify-center min-h-screen p-6">
-        <div class="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full relative max-h-[90vh] overflow-y-auto">
-          <button id="closeModal" class="absolute top-4 right-4 text-2xl font-bold text-blue-900 hover:text-blue-700" aria-label="Close">&times;</button>
-          <h2 id="subscribeHeading" class="text-xl font-bold mb-4">Subscribe to Weekly AI Insights</h2>
-          <form id="subscribeForm" class="space-y-4">
-            <input id="subscriberName" type="text" placeholder="Your name" class="w-full px-4 py-2 border rounded" required />
-            <input type="email" placeholder="Your email" class="w-full px-4 py-2 border rounded" required />
-            <button type="submit" class="w-full bg-blue-700 text-white font-bold py-2 rounded hover:bg-blue-800">Subscribe</button>
-          </form>
-          <div id="subscribeSuccess" class="hidden text-green-700 font-bold mt-4">Thank you for subscribing!</div>
-        </div>
-      </div>
-    </div>
+    <!-- Subscription modal removed -->
   <div id="quizModal" class="fixed inset-0 z-50 bg-black/50 hidden overflow-auto" role="dialog" aria-modal="true" aria-labelledby="quizHeading">
       <div class="flex items-center justify-center min-h-screen p-6">
         <div class="bg-white rounded-xl shadow-2xl p-8 max-w-lg w-full relative max-h-[90vh] overflow-y-auto">
@@ -551,9 +538,7 @@ function renderMainContent(page) {
         <div class="text-indigo-100 mb-4">${weeklyBlog.summary}</div>
         <div class="flex flex-col sm:flex-row gap-4">
           <button id="readWeeklyArticle" class="inline-block px-6 py-2 bg-white text-blue-800 font-bold rounded-lg shadow hover:bg-yellow-400 hover:text-blue-900 transition focus:outline focus:outline-2 focus:outline-yellow-400" aria-label="Read this week's AI blog">Read this week's article →</button>
-          <button id="subscribeBtn" class="inline-block px-6 py-2 bg-yellow-400 text-blue-900 font-bold rounded-lg shadow hover:bg-yellow-300 transition focus:outline focus:outline-2 focus:outline-blue-700" aria-label="Subscribe to Weekly AI Insights">
-            Subscribe
-          </button>
+          <!-- Subscribe button removed -->
           <button id="viewArchiveBtn" class="inline-block px-6 py-2 bg-indigo-100 text-blue-900 font-bold rounded-lg shadow hover:bg-indigo-200 transition focus:outline focus:outline-2 focus:outline-blue-700" aria-label="View previous weekly articles">
             View Archive
           </button>
@@ -713,83 +698,22 @@ function renderMainContent(page) {
     </div>
   `;
   setTimeout(() => {
-    // Subscribe modal logic
-    const subscribeBtn = document.getElementById('subscribeBtn');
-    if (subscribeBtn) {
-      subscribeBtn.addEventListener('click', () => {
-        const subModal = document.getElementById('subscribeModal');
-        subModal.classList.remove('hidden');
-        subModal.__lastOpener = subscribeBtn;
-        const nameField = document.getElementById('subscriberName');
-        (nameField || subModal).focus();
-        trapFocus(subModal);
-      });
-    }
-    // subscribe modal close button
-    const subCloseBtn = document.getElementById('closeModal');
-    const subModalEl = document.getElementById('subscribeModal');
-    if (subCloseBtn && subModalEl) {
-      subCloseBtn.addEventListener('click', () => {
-        subModalEl.classList.add('hidden');
-        releaseFocus(subModalEl);
-      });
-    }
+    // Subscribe UI removed
 // Weekly article modal logic
 const readWeeklyArticle = document.getElementById('readWeeklyArticle');
 if (readWeeklyArticle) {
   readWeeklyArticle.addEventListener('click', () => {
-  const articleModal = document.getElementById('articleModal');
+    const articleModal = document.getElementById('articleModal');
     const articleModalTitle = document.getElementById('articleModalTitle');
     const articleModalContent = document.getElementById('articleModalContent');
     articleModalTitle.textContent = weeklyBlog.title;
-  const weeklyDateStr = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-  articleModalContent.innerHTML = `<p class="text-sm text-blue-700 mb-2">${weeklyDateStr}</p>` + weeklyBlog.fullArticle;
-  articleModal.classList.remove('hidden');
-  articleModal.__lastOpener = readWeeklyArticle;
-  (articleModalTitle || document.getElementById('closeArticleModal')).focus();
-  trapFocus(articleModal);
-
-  // Attach close button event listener for weekly modal
-  const closeWeeklyBtn = document.getElementById('closeArticleModal');
-  if (closeWeeklyBtn) {
-    closeWeeklyBtn.onclick = () => {
-      articleModal.classList.add('hidden');
-      releaseFocus(articleModal);
-      history.pushState({}, '', '/');
-      document.title = "Humanity, Society and AI";
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.content = "Articles, insights, and resources on artificial intelligence, superintelligence, and their impact on human life, work, and meaning.";
-      // Reset OG/Twitter meta tags and canonical to site defaults
-      const resetMetaProperty = (prop, defaultValue) => {
-        const el = document.querySelector(`meta[property="${prop}"]`);
-        if (el) el.content = defaultValue || '';
-      };
-      const resetMetaName = (name, defaultValue) => {
-        const el = document.querySelector(`meta[name="${name}"]`);
-        if (el) el.content = defaultValue || '';
-      };
-      resetMetaProperty('og:title', 'Humanity, Society and AI');
-      resetMetaProperty('og:description', 'Articles, insights and resources on the impact of AI on work and human life.');
-      resetMetaProperty('og:url', window.location.origin + '/');
-      resetMetaName('twitter:title', 'Humanity, Society and AI');
-      resetMetaName('twitter:description', 'Articles, insights and resources on the impact of AI on work and human life.');
-      const canonical = document.querySelector('link[rel="canonical"]');
-      if (canonical) canonical.href = window.location.origin + '/';
-    };
-  }
-
-    // Attach close button event listener
-    const closeArticleModal = document.getElementById('closeArticleModal');
-    if (closeArticleModal) {
-      closeArticleModal.onclick = () => {
-        articleModal.classList.add('hidden');
-        releaseFocus(articleModal);
-        history.pushState({}, '', '/');
-  document.title = "Humanity, Society and AI";
-        let metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) metaDesc.content = "Articles, insights, and resources on artificial intelligence, superintelligence, and their impact on human life, work, and meaning.";
-      };
-    }
+    const weeklyDateStr = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    articleModalContent.innerHTML = `<p class="text-sm text-blue-700 mb-2">${weeklyDateStr}</p>` + weeklyBlog.fullArticle;
+    articleModal.classList.remove('hidden');
+    articleModal.__lastOpener = readWeeklyArticle;
+    (articleModalTitle || document.getElementById('closeArticleModal')).focus();
+    trapFocus(articleModal);
+    // Rely on global closeSharedArticleModal binding for the close button and Escape key
   });
 }
     // Quiz modal logic
@@ -1739,18 +1663,7 @@ function openArticleModal(idx, openerEl) {
     if (initial) initial.focus();
     trapFocus(articleModal);
 
-    // Attach close button event listener every time modal is opened
-    const closeArticleModal = document.getElementById('closeArticleModal');
-    if (closeArticleModal) {
-      closeArticleModal.onclick = () => {
-        articleModal.classList.add('hidden');
-        releaseFocus(articleModal);
-        history.pushState({}, '', '/');
-        document.title = "Humanity, Society and AI";
-        let metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) metaDesc.content = "Articles, insights, and resources on artificial intelligence, superintelligence, and their impact on human life, work, and meaning.";
-      };
-    }
+    // Close handled by global closeSharedArticleModal binding
 
     // Social sharing buttons
     const shareLinks = getShareLinks(idx);
@@ -1884,14 +1797,7 @@ setTimeout(() => {
       releaseFocus(quizModal);
     });
   }
-  const closeSubscribe = document.getElementById('closeModal');
-  const subscribeModalEl = document.getElementById('subscribeModal');
-  if (closeSubscribe && subscribeModalEl) {
-    closeSubscribe.addEventListener('click', () => {
-      subscribeModalEl.classList.add('hidden');
-      releaseFocus(subscribeModalEl);
-    });
-  }
+  // Subscribe modal removed
 }, 0);
 
 // --- Quiz modal logic for recommendations ---
@@ -3007,7 +2913,7 @@ function trapFocus(modalEl) {
         if (document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     } else if (e.key === 'Escape') {
-      const closeBtn = modalEl.querySelector('button[aria-label="Close"], #closeArticleModal, #closeQuizModal, #closeModal');
+  const closeBtn = modalEl.querySelector('button[aria-label="Close"], #closeArticleModal, #closeQuizModal');
       if (closeBtn) { e.preventDefault(); closeBtn.click(); }
     }
   }
