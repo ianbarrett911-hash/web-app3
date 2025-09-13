@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Sitemap: https://your-site.com/sitemap.xml
+# Disallow any private or staging paths as needed
+# Disallow: /admin

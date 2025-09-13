@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Teacher Toolkit — Primary (Ages 8–11)</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; margin: 24px; color: #111; }
+    header { text-align: center; margin-bottom: 18px; }
+    h1 { color: #0b5bd7; }
+    .section { margin-top: 16px; }
+    .notes { color: #555; font-size: 0.95rem; }
+    .lesson { border: 1px solid #ddd; padding: 12px; border-radius: 8px; margin-bottom: 10px; background: #fff; }
+    .print-only { display: none; }
+    @media print { .no-print { display: none } .print-only { display: block } }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/assets/logos/mainlogo.png" alt="logo" style="width:56px;height:56px;border-radius:8px;" />
+    <h1>Teacher Toolkit — Primary (Ages 8–11)</h1>
+    <p class="notes">Practical lesson plans, student activities, and simple templates to introduce AI concepts safely and accessibly.</p>
+  </header>
+
+  <section class="section">
+    <h2>Overview (1 page)</h2>
+    <p>This toolkit gives teachers three short lessons suitable for ages 8–11. Each lesson is activity-led and emphasises critical thinking, ethics, and simple technical intuition—not coding.</p>
+  </section>
+
+  <section class="section">
+    <h2>Lesson 1 — What is AI? (30–45 minutes)</h2>
+    <div class="lesson">
+      <h3>Learning goals</h3>
+      <ul>
+        <li>Understand that "AI" means systems that make decisions from data or rules.</li>
+        <li>Give examples of everyday AI (recommendations, voice assistants, simple filters).</li>
+      </ul>
+      <h3>Materials</h3>
+      <ul>
+        <li>Printed card pack: pictures & descriptions (provided below)</li>
+        <li>Whiteboard / flipchart</li>
+      </ul>
+      
+      <!-- Card pack preview (printable) -->
+      <h3 class="mt-4">Card pack (printable)</h3>
+      <p class="notes">Cut these into cards for the matching activity. Each card has a short description and a simple prompt for students.</p>
+      <div class="card-pack">
+        <div class="lesson" style="display:flex;gap:12px;flex-wrap:wrap;">
+          <div style="width:220px;padding:8px;border:1px dashed #ccc;border-radius:6px;background:#fafafa;">
+            <div style="height:110px;background:#eee;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#666;">Image: Recommender</div>
+            <h4 style="margin:8px 0 4px;">Video recommender</h4>
+            <div class="notes">Suggests videos based on what you watched before. Prompt: How does it decide which videos to show?</div>
+          </div>
+
+          <div style="width:220px;padding:8px;border:1px dashed #ccc;border-radius:6px;background:#fafafa;">
+            <div style="height:110px;background:#eee;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#666;">Image: Voice Assistant</div>
+            <h4 style="margin:8px 0 4px;">Voice assistant</h4>
+            <div class="notes">Answers questions and follows voice commands. Prompt: When might it make mistakes?</div>
+          </div>
+
+          <div style="width:220px;padding:8px;border:1px dashed #ccc;border-radius:6px;background:#fafafa;">
+            <div style="height:110px;background:#eee;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#666;">Image: Face Recogniser</div>
+            <h4 style="margin:8px 0 4px;">Face recogniser</h4>
+            <div class="notes">Finds faces in photos. Prompt: What could go wrong if it confuses people?</div>
+          </div>
+        </div>
+      </div>
+      <h3>Activity</h3>
+      <ol>
+        <li>Show students images or examples and ask: "Is this an example of AI?" Discuss.</li>
+        <li>Group work: match pictures to simple descriptions (e.g., "recommends videos", "recognises faces").</li>
+        <li>Wrap-up: Write one sentence about where students have seen these tools in their daily lives.</li>
+      </ol>
+      <h3>Teacher notes</h3>
+      <p class="notes">Keep definitions short and concrete. Focus on cause/effect rather than technical details. Emphasise that AI is built by people and can be improved.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Lesson 2 — Data & Bias (30–45 minutes)</h2>
+    <div class="lesson">
+      <h3>Learning goals</h3>
+      <ul>
+        <li>Understand that AI systems learn from examples (data).</li>
+        <li>Recognise that if data is unbalanced, outputs can be unfair.</li>
+      </ul>
+      <h3>Activity</h3>
+      <ol>
+        <li>Show two short stories about an automated decision; ask students which feels fair and why.</li>
+        <li>Class experiment: use token sets (coloured balls) to demonstrate sampling and how results change. See detailed teacher instructions below.</li>
+        <li>Discuss: how would we check an AI system to make sure it is fair?</li>
+      </ol>
+      <h3>Teacher notes</h3>
+      <p class="notes">Avoid complex statistics—use concrete visual metaphors. Reassure students that being critical of technology is a positive skill.</p>
+
+      <h4 class="mt-3">Class experiment — step-by-step (teacher script)</h4>
+      <div class="lesson">
+        <h5>Goal</h5>
+        <p>Show how different samples of data can change the behaviour of a system and why it matters for fairness.</p>
+
+        <h5>Materials</h5>
+        <ul>
+          <li>Two or three sets of coloured tokens (e.g., ping-pong balls, counters, or printed tokens). Choose contrasting colours like red/blue/green. ~30 tokens per set works well.</li>
+          <li>Two opaque bags or boxes to draw tokens from (or use a covered hat).</li>
+          <li>Whiteboard and marker to record results.</li>
+          <li>Optional: sticky notes to label groups or counters on the board.</li>
+        </ul>
+
+        <h5>Setup</h5>
+        <ol>
+          <li>Prepare two bags with different mixes of tokens. Example: Bag A = 20 red, 10 blue; Bag B = 10 red, 20 blue. (Red = outcome X, Blue = outcome Y.)</li>
+          <li>Explain that an 'automatic system' will make a decision by randomly sampling a token from a bag and using the token colour as the output.</li>
+          <li>Split the class into small teams (3–5 students) to collect samples and record observations.</li>
+        </ol>
+
+        <h5>Script (what to say)</h5>
+        <p>"Today we'll pretend a computer makes decisions by looking at past examples. Imagine the tokens show what the system usually saw before. We'll draw tokens to see how the system behaves."</p>
+        <p>"Team 1 will draw 10 tokens from Bag A and count how many reds and blues they get. Team 2 will do the same with Bag B. We'll compare results."</p>
+
+        <h5>Run the experiment</h5>
+        <ol>
+          <li>Each team draws 10 tokens at random from their assigned bag and records counts (red vs blue).</li>
+          <li>Collect the team results on the board and calculate totals and proportions (e.g., 7/10 red = 70% red).</li>
+          <li>Repeat the draw a couple of times (different students) to show variation between samples.</li>
+        </ol>
+
+        <h5>Expected observations to highlight</h5>
+        <ul>
+          <li>Bag A tends to produce more red; Bag B tends to produce more blue — this shows how the underlying data influences outputs.</li>
+          <li>Different draws (samples) vary — even from the same bag you may get different counts; randomness matters.</li>
+          <li>A small sample may be misleading; larger samples reduce random variation.</li>
+        </ul>
+
+        <h5>Discussion prompts (for non-technical teachers)</h5>
+        <ul>
+          <li>What does each bag represent in real life? (e.g., past decisions, user data, historical records)</li>
+          <li>If a computer learned only from Bag A history, what decisions might it make more often? Would that be fair for everyone?</li>
+          <li>How could we check if a real system is biased? (Look at examples it makes mistakes on, compare results for different groups.)</li>
+          <li>What would you change in the system to make it fairer? (Collect better data, add human checks, monitor performance regularly.)</li>
+        </ul>
+
+        <h5>Teacher tips</h5>
+        <ul>
+          <li>Keep language simple: use 'examples' instead of 'training data' when addressing younger students.</li>
+          <li>Use concrete analogies: 'the bag shows what the computer has seen before.'</li>
+          <li>If time is short, do one round and discuss the idea rather than repeating draws.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Lesson 3 — Responsible Use & Everyday Decisions (30–45 minutes)</h2>
+    <div class="lesson">
+      <h3>Learning goals</h3>
+      <ul>
+        <li>Discuss choices about when to use automation and when humans should decide.</li>
+        <li>Introduce simple checks: accuracy, explainability, human oversight.</li>
+      </ul>
+      <h3>Activity</h3>
+      <ol>
+        <li>Scenario role-play: students act as decision panels for an automated tool (e.g., library book recommender).</li>
+        <li>Debrief: what rules would you set? When should a human step in?</li>
+      </ol>
+      <h3>Teacher notes</h3>
+      <p class="notes">Emphasise values like fairness, transparency and human judgement. Offer extension tasks for older classes (research local AI systems).</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Printable student worksheet (1 page)</h2>
+    <div class="lesson">
+      <p><strong>Worksheet:</strong> Describe an example of AI you've used. Circle whether it felt fair, helpful, or surprising. Suggest one way to make it better.</p>
+    </div>
+  </section>
+
+  <section class="section no-print">
+    <p><a href="#" onclick="window.print();return false;" class="inline-flex items-center gap-2">Print this toolkit</a></p>
+  </section>
+
+  <footer class="section">
+    <p class="notes">This toolkit is distributed under a permissive education use licence. Adapt and translate locally. For more resources visit the main site.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Teacher Toolkit — Middle School (Ages 11–14)</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; margin: 24px; color: #111; }
+    header { text-align: center; margin-bottom: 18px; }
+    h1 { color: #0b5bd7; }
+    .section { margin-top: 16px; }
+    .notes { color: #555; font-size: 0.95rem; }
+    .lesson { border: 1px solid #ddd; padding: 12px; border-radius: 8px; margin-bottom: 10px; background: #fff; }
+    .print-only { display: none; }
+    @media print { .no-print { display: none } .print-only { display: block } }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/assets/logos/mainlogo.png" alt="logo" style="width:56px;height:56px;border-radius:8px;" />
+    <h1>Teacher Toolkit — Middle School (Ages 11–14)</h1>
+    <p class="notes">Lesson plans and activities to explore AI concepts, data, ethics, and hands-on lightweight experiments suitable for older students.</p>
+  </header>
+
+  <section class="section">
+    <h2>Overview</h2>
+    <p>This toolkit contains four structured lessons for ages 11–14. Each lesson includes: clear learning objectives, a 30–50 minute classroom activity, teacher notes, suggested materials, and simple assessment tasks. No previous programming experience required. Lessons are adaptable for mixed-ability groups and can be shortened or extended.</p>
+    <ul class="notes">
+      <li>Estimated time: 4–5 sessions of 30–50 minutes (or compressed into 2 longer lessons).</li>
+      <li>Core skills: critical thinking about data, simple measurement and evaluation, ethical reasoning, and basic data-handling.</li>
+      <li>Adaptations: each lesson includes suggestions for extension (faster groups) and scaffolding (additional support).</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Lesson 1 — How do AI systems learn? (30–40 minutes)</h2>
+    <div class="lesson">
+      <h3>Learning objectives</h3>
+      <ul>
+        <li>Explain, in simple terms, what 'training data' and 'examples' mean.</li>
+        <li>Describe the difference between rule-based systems and example-driven (learned) systems.</li>
+  <li>Make a prediction using either a rule or examples and reflect on its limits.</li>
+      </ul>
+      <h3>Materials</h3>
+      <ul>
+        <li>Printed images or cards (10–20) showing clear categories (e.g., animals vs vehicles, or fruits vs non-fruits).</li>
+        <li>Whiteboard or flipchart, sticky notes.</li>
+      </ul>
+      <h3>Activity</h3>
+      <ol>
+        <li>Warm-up (5 min): Show 4 example cards and ask students to say what these have in common. Collect suggestions.</li>
+        <li>Rules vs Examples (10–15 min): Ask groups to write a simple rule that would pick those 4 cards (e.g., "has wheels"), then test the rule on 6 new cards. Record successes and failures.</li>
+        <li>Example-based approach (10–15 min) — teacher script (step-by-step):
+          <ol>
+            <li>Before class: prepare 8 'training' cards (labelled) and 6 'test' cards (unlabelled). Example training labels: Apple (fruit), Carrot (vegetable), Bus (vehicle), Cat (animal). Make sure some test cards are similar to training examples and one or two are ambiguous.</li>
+            <li>Step 1 (2 min) — Explain to students: "We're going to try a different method. Instead of writing a rule, you'll look at examples and say which category the new items look most like. Think: 'Which of my example cards is this most similar to?'"</li>
+            <li>Step 2 (6–8 min) — Group task: give each group the same 8 labelled examples and 6 unlabelled test cards. Ask them to write the name of the training card they think the test card is most like, and then decide a final label (for example, if test card looks most like 'Apple', label = Fruit). Write both: similar example + final label.</li>
+            <li>Step 3 (2–3 min) — Reveal answers: show the true labels for the 6 test cards.</li>
+            <li>Step 4 (2 min) — Record outcomes: for each test card, ask groups to mark whether their label matched the true label.</li>
+          </ol>
+        </li>
+        <li>Reflect (5–10 min) — teacher script (guided prompts):
+          <ol>
+            <li>Show a table on the board with three columns: Test card, Rule group's label, Example group's label, True label. Fill in one example together.</li>
+            <li>Ask students these specific, scriptable questions and invite short answers (20–40 seconds each):
+              <ul>
+                <li>"Which test cards did the rule approach get wrong but the example approach got right?"</li>
+                <li>"Which cards did both approaches get wrong? Why might that be? (Ambiguous image/insufficient information)"</li>
+                <li>"For the items the example approach got wrong, what example did students pick that caused the mistake?"</li>
+                <li>"Which approach felt easier to explain to someone else?"</li>
+              </ul>
+            </li>
+            <li>Conclude with the teacher line: "Rules are easy to state but can miss cases we didn't think of. Examples can be flexible but depend on the examples we choose — if the examples are unrepresentative, predictions may be wrong."</li>
+          </ol>
+          <h4>Expected outcomes & troubleshooting</h4>
+          <ul>
+            <li>Expected: Rules will usually fail on items that don't match the rule exactly. Example-based matching will often succeed when items clearly resemble a training example.</li>
+            <li>Troubleshoot: If all groups struggle, reduce the number of test cards to 3 and discuss one item slowly. If students overfit to superficial features (e.g., colour), ask them to explain what feature they used.</li>
+            <li>Note: Use simple language. If students use technical words, paraphrase them for the class and check understanding.</li>
+          </ul>
+          <h4>Differentiation & extension</h4>
+          <ul>
+            <li>Support: Provide labelled sticky notes on training cards showing 2–3 explicit features (e.g., 'has wheels', 'is round'). This helps scaffold weaker learners.</li>
+            <li>Stretch: Ask stronger groups to produce a one-sentence rule after the example approach: "Based on your examples, what short rule would have captured most correct answers?"</li>
+          </ul>
+        </li>
+      </ol>
+      <h3>Teacher notes</h3>
+      <p class="notes">Rules are explicit and easy to explain but brittle; examples can be flexible but require lots of labeled data. Aim for concrete observations rather than technical vocabulary. If students are struggling, reduce the number of test cards.</p>
+      <h4>Extensions</h4>
+      <ul>
+        <li>Ask advanced groups to design counterexamples that break the rule.</li>
+        <li>Add noisy or ambiguous cards to show how examples can confuse models if labels are inconsistent.</li>
+      </ul>
+      <h4>Assessment ideas</h4>
+      <ul>
+        <li>Short exit ticket: "Describe one strength and one weakness of rules and one strength and one weakness of example-driven systems."</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Lesson 2 — Measuring performance (40–50 minutes)</h2>
+    <div class="lesson">
+      <h3>Learning objectives</h3>
+      <ul>
+        <li>Explain accuracy and error rate in plain language and compute a basic accuracy score.</li>
+        <li>Compare predictions to ground truth and begin to reason about causes of error.</li>
+      </ul>
+      <h3>Materials</h3>
+      <ul>
+        <li>Printed test set of 12 labelled items (cards or a spreadsheet). Copy the worksheet from the downloadable handouts (`teacher-toolkit-middle-school-worksheets.html`).</li>
+        <li>Whiteboard and marker to record group results; optional calculators or spreadsheet access.</li>
+      </ul>
+      <h3>Teacher script — exact phrasing and timings</h3>
+      <ol>
+        <li>Prep (teacher, 5 min): Put 12 test items on the board (or hand out cards). Keep the true labels hidden. Open the worksheet handout for students to record answers.</li>
+        <li>Explain (2 min): Say — "You will work in pairs to predict the label for each item. After you finish, we'll reveal the true labels and compute how accurate you were. Accuracy tells us what fraction of items you predicted correctly."</li>
+        <li>Predict (10–15 min): Say — "Work with your partner. For each item, write your predicted label on the worksheet. Try to agree on one prediction per item." Walk the room, prompt groups if they get stuck: "What feature helped you decide?"</li>
+        <li>Reveal & compute (8–10 min): Reveal the true labels. Ask pairs to count their correct answers and compute accuracy: "Correct ÷ Total × 100%." Record two group results on the board as examples (teacher writes them down verbatim).</li>
+        <li>Guided discussion (8–10 min): Use these scripted questions (allow 20–40 seconds per group answer):
+          <ul>
+            <li>"Which items did most groups get wrong?"</li>
+            <li>"Were the mistakes because the item was ambiguous or because the label didn't match students' expectations?"</li>
+            <li>"If one group had much higher accuracy, what did they do differently?"</li>
+          </ul>
+        </li>
+      </ol>
+      <h3>Simple classroom example (teacher fill-in)</h3>
+      <p class="notes">On the board write: "Group A: 9/12 → 75%  Group B: 7/12 → 58%" then ask: "Does 75% mean the system is good? What else would you check?"</p>
+      <h3>Teacher notes & troubleshooting</h3>
+      <ul>
+        <li>Explain: "Accuracy is easy but can be misleading — for example, if 90% of items are of one type, guessing the most common type would give 90% accuracy but be useless."</li>
+        <li>If students struggle to compute percentages, let them report correct/total and show how to compute percentage on the board step-by-step.</li>
+        <li>If results are identical across groups, add two 'trick' items in a follow-up round to surface edge cases.</li>
+      </ul>
+      <h4>Extension — confusion table (teacher script, 8 min)</h4>
+      <p class="notes">For two-label tasks, draw a 2×2 table (True label vs Predicted label) and fill counts together. Script: "This shows where predictions confuse one class for another. It helps us see patterns in mistakes."</p>
+      <h4>Assessment idea</h4>
+      <p class="notes">Ask students to submit the worksheet and a one-paragraph reflection: what mistakes were most common, and one suggestion to reduce them.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Lesson 3 — Ethics & explainability (30–40 minutes)</h2>
+    <div class="lesson">
+      <h3>Learning objectives</h3>
+      <ul>
+        <li>Identify potential harms and limits of automated systems (bias, privacy, unfair outcomes).</li>
+        <li>Write a clear, short explanation that a non-expert could understand.</li>
+        <li>Understand the role of human review and simple mitigations.</li>
+      </ul>
+      <h3>Materials</h3>
+      <ul>
+        <li>Scenario cards (3 or 4). Use the downloadable handout for printable scenario text.</li>
+        <li>Sticky notes and flipchart for group notes.</li>
+      </ul>
+      <h3>Teacher script — exact phrasing and timings</h3>
+      <ol>
+        <li>Intro (3 min): Say — "We're going to look at short scenarios where an automated system made a decision. Your job is to spot who might be harmed and to write a short explanation of the decision that a parent would understand."</li>
+        <li>Group work (10 min): Give each group one scenario card. Script: "Read the card. On sticky notes, write two things that could go wrong, one reason the mistake might happen, and one idea to check or fix it." Circulate and prompt: "Who is affected? What data did the system use?"</li>
+        <li>Write explanation (8–10 min): Script: "Now write a short paragraph (3–4 sentences) that explains why the system might have made that decision and one limitation. Use non-technical language — imagine you're explaining to a parent."</li>
+        <li>Share & feedback (8–10 min): Groups swap explanations and provide one piece of feedback focused on clarity: is it understandable to a non-expert? Each group gives one suggestion to improve clarity.</li>
+      </ol>
+      <h3>Scenario examples (paste into handout)</h3>
+      <ul>
+        <li>School recommendation system suggesting extra tutoring for a student, based on past grades and attendance.</li>
+        <li>Automated moderation flagging a post as inappropriate because it used certain keywords.</li>
+        <li>Loan eligibility check that matched customers to prior profiles and rejected an applicant.</li>
+      </ul>
+      <h3>Teacher notes & rubrics</h3>
+      <ul>
+        <li>Rubric (3 points): Clear explanation (1), identifies at least one risk (1), proposes a simple mitigation (1).</li>
+        <li>Keep examples local and relatable — prefer school or community scenarios.</li>
+        <li>Remind students: do not include personal or sensitive data in examples or homework.</li>
+      </ul>
+      <h4>Assessment idea</h4>
+      <p class="notes">Collect the short paragraph and grade using the rubric above. Alternatively, use peer-feedback as formative assessment.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Lesson 4 — Mini data project (two lessons + homework)</h2>
+    <div class="lesson">
+      <h3>Learning objectives</h3>
+      <ul>
+        <li>Plan and run a small data collection, record results, and present simple findings.</li>
+        <li>Reflect on sampling choices and limitations of conclusions.</li>
+      </ul>
+      <h3>Teacher script & timetable</h3>
+      <ol>
+        <li>Lesson A — Plan & collect (45–50 min):
+          <ol>
+            <li>Intro (5 min): Explain the question and show the worksheet handout. Script: "Your group's task is to answer one clear question with data. Decide what to collect, how to record it, and who will collect it."</li>
+            <li>Design (15 min): Groups write the question, agree on labels, and fill the first 5 rows of the worksheet as a template.</li>
+            <li>Collect (20–30 min): If collecting around school, send groups out in rotation for a timed 10–15 minute sampling window. If not possible, set as homework to collect up to 30 observations.</li>
+          </ol>
+        </li>
+        <li>Lesson B — Analyse & present (45–60 min):
+          <ol>
+            <li>Compute (15–20 min): Groups tally counts, compute proportions, and prepare one simple chart (drawn or in a spreadsheet). Script prompt: "Show your two main numbers and one surprising thing you noticed."</li>
+            <li>Present (20–25 min): Each group has 3–5 minutes to share findings and one limitation of their data collection method.</li>
+            <li>Class reflection (5–10 min): Teacher-led wrap: "Which study seems most reliable and why?"</li>
+          </ol>
+        </li>
+      </ol>
+      <h3>Suggested project ideas (teacher read-aloud)</h3>
+      <ul>
+        <li>How many items found in the school yard are natural vs man-made?</li>
+        <li>Which sentences from classmates are questions vs statements?</li>
+        <li>How often are photos taken in class labelled as daytime vs nighttime (teacher-provided images)?</li>
+      </ul>
+      <h3>Rubric & assessment (teacher friendly)</h3>
+      <ul>
+        <li>Planning and recording (10 points): clear question, complete worksheet.</li>
+        <li>Analysis (10 points): correct counts and a clear proportion or chart.</li>
+        <li>Reflection & presentation (10 points): clear limitation identified and a concise presentation.</li>
+      </ul>
+      <h3>Teacher notes & adaptations</h3>
+      <ul>
+        <li>For younger/more guided groups, provide a pre-filled worksheet with example rows.</li>
+        <li>For advanced groups, ask them to compare two different sampling methods and report differences.</li>
+        <li>Remind students to anonymise any human-related notes and avoid collecting personal data.</li>
+      </ul>
+      <p class="notes">Worksheets, scenario cards and test cards are available as printable handouts in the companion files (`teacher-toolkit-middle-school-worksheets.html` and the .doc download).</p>
+    </div>
+  </section>
+
+  <section class="section no-print">
+    <p><a href="#" onclick="window.print();return false;" class="inline-flex items-center gap-2">Print this toolkit</a></p>
+  </section>
+
+  <footer class="section">
+    <p class="notes">Adapt and reuse. For more resources, visit the main site.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "web-app",
+  "version": "1.0.0",
+  "description": "A basic web application that can be iteratively improved.",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview --port 5173",
+  "generate:pdfs": "node tools/generate-pdfs.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "live-server": "^1.2.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.3",
+    "vite": "^7.1.5"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2"
+  }
+}
