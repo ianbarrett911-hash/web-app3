@@ -502,7 +502,8 @@ function renderMainContent(page) {
   <article class="md:col-span-2 bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 rounded-2xl shadow-2xl p-8 flex flex-col md:flex-row items-center justify-between mb-0 border-4 border-yellow-400" tabindex="0" aria-labelledby="weekly-blog-title">
       <div>
         <span class="inline-block bg-yellow-400 text-blue-900 text-xs font-bold px-3 py-1 rounded-full mb-3">${weeklyBlog.badge}</span>
-        <h3 id="weekly-blog-title" class="text-2xl md:text-3xl font-extrabold text-white mb-2">${weeklyBlog.title}</h3>
+  <h3 id="weekly-blog-title" class="text-2xl md:text-3xl font-extrabold text-white mb-2">${weeklyBlog.title}</h3>
+  <div class="text-indigo-200 text-sm mb-2">${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</div>
         <div class="text-indigo-100 mb-4">${weeklyBlog.summary}</div>
         <div class="flex flex-col sm:flex-row gap-4">
           <button id="readWeeklyArticle" class="inline-block px-6 py-2 bg-white text-blue-800 font-bold rounded-lg shadow hover:bg-yellow-400 hover:text-blue-900 transition focus:outline focus:outline-2 focus:outline-yellow-400" aria-label="Read this week's AI blog">Read this week's article →</button>
@@ -690,11 +691,12 @@ function renderMainContent(page) {
 const readWeeklyArticle = document.getElementById('readWeeklyArticle');
 if (readWeeklyArticle) {
   readWeeklyArticle.addEventListener('click', () => {
-    const articleModal = document.getElementById('articleModal');
+  const articleModal = document.getElementById('articleModal');
     const articleModalTitle = document.getElementById('articleModalTitle');
     const articleModalContent = document.getElementById('articleModalContent');
     articleModalTitle.textContent = weeklyBlog.title;
-    articleModalContent.innerHTML = weeklyBlog.fullArticle;
+  const weeklyDateStr = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  articleModalContent.innerHTML = `<p class="text-sm text-blue-700 mb-2">${weeklyDateStr}</p>` + weeklyBlog.fullArticle;
   articleModal.classList.remove('hidden');
   articleModal.__lastOpener = readWeeklyArticle;
   (articleModalTitle || document.getElementById('closeArticleModal')).focus();
