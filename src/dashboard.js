@@ -351,6 +351,50 @@ document.getElementById('root').innerHTML = `
   </div>
 `;
 
+// --- Shared modal close utility for article/weekly modals ---
+function closeSharedArticleModal() {
+  const articleModal = document.getElementById('articleModal');
+  if (!articleModal) return;
+  articleModal.classList.add('hidden');
+  releaseFocus(articleModal);
+  const path = window.location.pathname;
+  if (/^\/article\/(\d+)/.test(path) || /^\/weekly\/(\d+)/.test(path)) {
+    history.pushState({}, '', '/');
+  }
+  document.title = "Humanity, Society and AI";
+  let metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.content = "Articles, insights, and resources on artificial intelligence, superintelligence, and their impact on human life, work, and meaning.";
+  const resetMetaProperty = (prop, defaultValue) => {
+    const el = document.querySelector(`meta[property="${prop}"]`);
+    if (el) el.content = defaultValue || '';
+  };
+  const resetMetaName = (name, defaultValue) => {
+    const el = document.querySelector(`meta[name="${name}"]`);
+    if (el) el.content = defaultValue || '';
+  };
+  resetMetaProperty('og:title', 'Humanity, Society and AI');
+  resetMetaProperty('og:description', 'Articles, insights and resources on the impact of AI on work and human life.');
+  resetMetaProperty('og:url', window.location.origin + '/');
+  resetMetaName('twitter:title', 'Humanity, Society and AI');
+  resetMetaName('twitter:description', 'Articles, insights and resources on the impact of AI on work and human life.');
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.href = window.location.origin + '/';
+}
+
+// Bind global listeners once
+setTimeout(() => {
+  const closeBtn = document.getElementById('closeArticleModal');
+  if (closeBtn) {
+    closeBtn.onclick = (e) => { e.preventDefault(); closeSharedArticleModal(); };
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const articleModal = document.getElementById('articleModal');
+      if (articleModal && !articleModal.classList.contains('hidden')) closeSharedArticleModal();
+    }
+  });
+}, 0);
+
 // --- Main content rendering function ---
 function renderMainContent(page) {
   const main = document.getElementById('main-content');
@@ -704,6 +748,35 @@ if (readWeeklyArticle) {
   articleModal.__lastOpener = readWeeklyArticle;
   (articleModalTitle || document.getElementById('closeArticleModal')).focus();
   trapFocus(articleModal);
+
+  // Attach close button event listener for weekly modal
+  const closeWeeklyBtn = document.getElementById('closeArticleModal');
+  if (closeWeeklyBtn) {
+    closeWeeklyBtn.onclick = () => {
+      articleModal.classList.add('hidden');
+      releaseFocus(articleModal);
+      history.pushState({}, '', '/');
+      document.title = "Humanity, Society and AI";
+      let metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.content = "Articles, insights, and resources on artificial intelligence, superintelligence, and their impact on human life, work, and meaning.";
+      // Reset OG/Twitter meta tags and canonical to site defaults
+      const resetMetaProperty = (prop, defaultValue) => {
+        const el = document.querySelector(`meta[property="${prop}"]`);
+        if (el) el.content = defaultValue || '';
+      };
+      const resetMetaName = (name, defaultValue) => {
+        const el = document.querySelector(`meta[name="${name}"]`);
+        if (el) el.content = defaultValue || '';
+      };
+      resetMetaProperty('og:title', 'Humanity, Society and AI');
+      resetMetaProperty('og:description', 'Articles, insights and resources on the impact of AI on work and human life.');
+      resetMetaProperty('og:url', window.location.origin + '/');
+      resetMetaName('twitter:title', 'Humanity, Society and AI');
+      resetMetaName('twitter:description', 'Articles, insights and resources on the impact of AI on work and human life.');
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) canonical.href = window.location.origin + '/';
+    };
+  }
 
     // Attach close button event listener
     const closeArticleModal = document.getElementById('closeArticleModal');
