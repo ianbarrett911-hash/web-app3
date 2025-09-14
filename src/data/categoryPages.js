@@ -1,6 +1,83 @@
 import { weeklyPosts } from './weeklyArchive.js';
 
 export const categoryPages = {
+"Medical AI Resources": {
+  title: "Medical AI Resources – Clinicians & Patients",
+  content: `
+    <section class="mb-10" aria-labelledby="medical-ai-resources-title">
+      <div class="rounded-3xl bg-white/95 shadow-2xl p-8">
+        <h2 id="medical-ai-resources-title" class="text-3xl font-extrabold text-blue-900 mb-2">Practical AI in Healthcare</h2>
+        <p class="text-blue-900 mb-6">Curated, trustworthy links for healthcare professionals and patients on AI-enabled care, safety, and adoption. External links open in a new tab.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <section aria-labelledby="clinician-links">
+            <h3 id="clinician-links" class="text-2xl font-semibold text-blue-900 mb-3">For Clinicians</h3>
+            <ul class="list-disc pl-6 space-y-2 text-blue-900">
+              <li>
+                <a class="underline text-blue-700 hover:text-yellow-600" href="https://www.ama-assn.org/practice-management/digital/ama-augmented-intelligence-ai-resources" target="_blank" rel="noopener">AMA – Augmented Intelligence (AI) in Healthcare</a>
+                <div class="text-sm text-gray-700">Policy, use cases, and guidance from the American Medical Association.</div>
+              </li>
+              <li>
+                <a class="underline text-blue-700 hover:text-yellow-600" href="https://www.ahrq.gov/learning-health-systems/aiml/index.html" target="_blank" rel="noopener">AHRQ – AI & Machine Learning in Health Systems</a>
+                <div class="text-sm text-gray-700">Evidence and implementation resources from the U.S. Agency for Healthcare Research and Quality.</div>
+              </li>
+              <li>
+                <a class="underline text-blue-700 hover:text-yellow-600" href="https://www.nature.com/collections/hhajgjjfeh" target="_blank" rel="noopener">Nature – Clinical AI Collection</a>
+                <div class="text-sm text-gray-700">Peer‑reviewed advances in clinical AI (imaging, triage, prediction).</div>
+              </li>
+              <li>
+                <a class="underline text-blue-700 hover:text-yellow-600" href="https://www.thelancet.com/journals/landig/home" target="_blank" rel="noopener">The Lancet Digital Health</a>
+                <div class="text-sm text-gray-700">Research at the intersection of clinical care and digital technologies, including AI.</div>
+              </li>
+              <li>
+                <a class="underline text-blue-700 hover:text-yellow-600" href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a>
+                <div class="text-sm text-gray-700">Practical risk governance guidance applicable to clinical AI deployments.</div>
+              </li>
+              <li>
+                <a class="underline text-blue-700 hover:text-yellow-600" href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-software-medical-device" target="_blank" rel="noopener">FDA – AI/ML Software as a Medical Device (SaMD)</a>
+                <div class="text-sm text-gray-700">Regulatory perspective on AI/ML-enabled medical devices and change control.</div>
+              </li>
+              <li>
+                <a class="underline text-blue-700 hover:text-yellow-600" href="https://who.int/publications/i/item/9789240077987" target="_blank" rel="noopener">WHO – Generative AI in Health: Guidance</a>
+                <div class="text-sm text-gray-700">World Health Organization considerations for safe, effective use of generative AI in health.</div>
+              </li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="patient-links">
+            <h3 id="patient-links" class="text-2xl font-semibold text-blue-900 mb-3">For Patients</h3>
+            <ul class="list-disc pl-6 space-y-2 text-blue-900">
+              <li>
+                <a class="underline text-blue-700 hover:text-yellow-600" href="https://www.mayoclinic.org/medical-professionals/center-for-digital-health/artificial-intelligence" target="_blank" rel="noopener">Mayo Clinic – AI in Medicine (overview)</a>
+                <div class="text-sm text-gray-700">Plain‑language explanations and examples of AI supporting care.</div>
+              </li>
+              <li>
+                <a class="underline text-blue-700 hover:text-yellow-600" href="https://www.cancer.gov/news-events/cancer-currents-blog/2023/ai-cancer-research-clinical-care" target="_blank" rel="noopener">NCI – How AI is used in Cancer Care</a>
+                <div class="text-sm text-gray-700">From the U.S. National Cancer Institute: where AI helps today and what to ask your care team.</div>
+              </li>
+              <li>
+                <a class="underline text-blue-700 hover:text-yellow-600" href="https://www.healthit.gov/topic/innovations/artificial-intelligence-ai-health-it" target="_blank" rel="noopener">ONC – AI & Health IT (Patient Info)</a>
+                <div class="text-sm text-gray-700">U.S. Office of the National Coordinator resources on AI, privacy, and rights.</div>
+              </li>
+              <li>
+                <a class="underline text-blue-700 hover:text-yellow-600" href="https://www.nhs.uk/nhs-services/online-services/about-the-nhs-app/nhs-app-and-artificial-intelligence-ai" target="_blank" rel="noopener">NHS – AI in the NHS App (UK)</a>
+                <div class="text-sm text-gray-700">How AI features support access and safety within the NHS app.</div>
+              </li>
+              <li>
+                <a class="underline text-blue-700 hover:text-yellow-600" href="https://www.who.int/news-room/questions-and-answers/item/artificial-intelligence-and-health" target="_blank" rel="noopener">WHO – Q&A: Artificial Intelligence and Health</a>
+                <div class="text-sm text-gray-700">Frequently asked questions about AI in health from the World Health Organization.</div>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="mt-8">
+          <a href="#" data-category="Medical AI Resources" class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Back to Medical Resources</a>
+        </div>
+      </div>
+    </section>
+  `
+},
 "Weekly Archive": {
   title: "Weekly AI Insights – Archive",
   content: `

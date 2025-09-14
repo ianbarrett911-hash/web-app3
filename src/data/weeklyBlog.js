@@ -76,6 +76,29 @@ export const weeklyBlog = {
     <p class="text-sm text-blue-700 mt-4">
       <strong>Discussion Prompt:</strong> Where would AI save you the most time in a clinical day—or as a patient?
     </p>
+    <div class="mt-6 p-4 bg-blue-50 rounded border border-blue-200">
+      <div class="font-semibold text-blue-900 mb-2">Further reading</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <div class="text-blue-900 font-semibold mb-1">For Clinicians</div>
+          <ul class="list-disc pl-5 text-sm text-blue-900 space-y-1">
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.ama-assn.org/practice-management/digital/ama-augmented-intelligence-ai-resources" target="_blank" rel="noopener">AMA – Augmented Intelligence (AI) in Healthcare</a></li>
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.ahrq.gov/learning-health-systems/aiml/index.html" target="_blank" rel="noopener">AHRQ – AI & Machine Learning in Health Systems</a></li>
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST – AI Risk Management Framework</a></li>
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-software-medical-device" target="_blank" rel="noopener">FDA – AI/ML Software as a Medical Device (SaMD)</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-blue-900 font-semibold mb-1">For Patients</div>
+          <ul class="list-disc pl-5 text-sm text-blue-900 space-y-1">
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.mayoclinic.org/medical-professionals/center-for-digital-health/artificial-intelligence" target="_blank" rel="noopener">Mayo Clinic – AI in Medicine (overview)</a></li>
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.cancer.gov/news-events/cancer-currents-blog/2023/ai-cancer-research-clinical-care" target="_blank" rel="noopener">NCI – How AI is used in Cancer Care</a></li>
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.healthit.gov/topic/innovations/artificial-intelligence-ai-health-it" target="_blank" rel="noopener">ONC – AI & Health IT (Patient Info)</a></li>
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.who.int/news-room/questions-and-answers/item/artificial-intelligence-and-health" target="_blank" rel="noopener">WHO – Q&A: Artificial Intelligence and Health</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   `,
   link: "#",
   badge: "This Week",
