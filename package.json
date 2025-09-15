@@ -7,7 +7,7 @@
   
   "scripts": {
     "dev": "vite",
-  "prebuild": "npm run generate:sitemap && npm run generate:og && npm run generate:prerender && npm run generate:social",
+  "prebuild": "npm run generate:sitemap && node tools/run-generate-og-if-local.js && npm run generate:prerender && npm run generate:social",
   "build": "vite build",
   "preview": "vite preview --port 5173",
   "generate:pdfs": "node tools/generate-pdfs.js",
