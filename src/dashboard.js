@@ -65,6 +65,126 @@ import { weeklyBlog } from './data/weeklyBlog.js';
 import { categoryPages } from './data/categoryPages.js';
 import { quizzes } from './data/microlearning.js';
 
+// --- AI Microlearning page logic (moved to top-level so it's available on category navigation) ---
+function initMicrolearningPage() {
+  const root = document.getElementById('microlearning-root');
+  if (!root) return;
+
+  let activeQuiz = null;
+  let answers = [];
+
+  function renderQuizList() {
+    root.innerHTML = `
+      <div class="space-y-4">
+        ${quizzes.map(q => `
+          <div class="p-4 rounded border bg-white">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-blue-900 font-bold">${q.title}</div>
+                <div class="text-sm text-gray-700">Level: ${q.level}</div>
+                <div class="text-sm text-gray-700">${q.description}</div>
+              </div>
+              <button class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700" data-start="${q.id}">Start</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    root.querySelectorAll('button[data-start]').forEach(btn => {
+      btn.onclick = () => startQuiz(btn.getAttribute('data-start'));
+    });
+  }
+
+  function startQuiz(id) {
+    activeQuiz = quizzes.find(q => q.id === id);
+    if (!activeQuiz) return;
+    answers = new Array(activeQuiz.questions.length).fill(null);
+    renderQuiz();
+  }
+
+  function renderQuiz() {
+    const q = activeQuiz;
+    if (!q) return;
+    root.innerHTML = `
+      <div class="mb-4 flex items-center justify-between">
+        <div>
+          <div class="text-2xl font-bold text-blue-900">${q.title}</div>
+          <div class="text-sm text-gray-700">${q.level} \u2022 ${q.questions.length} questions</div>
+        </div>
+        <button class="px-3 py-2 bg-gray-100 text-blue-900 rounded hover:bg-gray-200" id="backToList">Back</button>
+      </div>
+      <form id="quizForm" class="space-y-6">
+        ${q.questions.map((item, idx) => `
+          <fieldset class="p-4 bg-white rounded border">
+            <legend class="font-semibold text-blue-900 mb-2">Q${idx+1}. ${item.q}</legend>
+            ${item.options.map((opt, oi) => `
+              <label class="block mb-1">
+                <input type="radio" name="q${idx}" value="${oi}" class="mr-2"> ${opt}
+              </label>
+            `).join('')}
+          </fieldset>
+        `).join('')}
+        <div class="flex gap-3">
+          <button type="button" class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700" id="submitQuiz">Submit</button>
+          <button type="button" class="px-3 py-2 bg-gray-100 text-blue-900 rounded hover:bg-gray-200" id="resetQuiz">Reset</button>
+        </div>
+      </form>
+      <div id="quizResults" class="mt-6"></div>
+    `;
+
+    const backBtn = document.getElementById('backToList');
+    if (backBtn) backBtn.onclick = () => renderQuizList();
+    const resetBtn = document.getElementById('resetQuiz');
+    if (resetBtn) resetBtn.onclick = () => startQuiz(q.id);
+    const submitBtn = document.getElementById('submitQuiz');
+    if (submitBtn) submitBtn.onclick = gradeQuiz;
+  }
+
+  function gradeQuiz() {
+    const form = document.getElementById('quizForm');
+    const q = activeQuiz;
+    if (!form || !q) return;
+    q.questions.forEach((item, idx) => {
+      const selected = form.querySelector(`input[name="q${idx}"]:checked`);
+      answers[idx] = selected ? Number(selected.value) : null;
+    });
+    const total = q.questions.length;
+    let correct = 0;
+    const details = q.questions.map((item, idx) => {
+      const isCorrect = answers[idx] === item.correctIndex;
+      if (isCorrect) correct++;
+      const your = answers[idx] !== null ? item.options[answers[idx]] : '(no answer)';
+      const correctText = item.options[item.correctIndex];
+      return `
+        <div class="p-4 rounded border ${isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}">
+          <div class="font-semibold text-blue-900">Q${idx+1}. ${item.q}</div>
+          <div class="text-sm">Your answer: <strong>${your}</strong></div>
+          ${isCorrect ? '' : `<div class="text-sm">Correct: <strong>${correctText}</strong></div>`}
+          ${isCorrect ? '' : `<div class="text-sm text-gray-800 mt-1">Why: ${item.explanation}</div>`}
+        </div>`;
+    }).join('');
+
+    const results = document.getElementById('quizResults');
+    if (!results) return;
+    const scorePct = Math.round((correct / total) * 100);
+    results.innerHTML = `
+      <div class="mb-3 text-blue-900 font-bold">Score: ${correct}/${total} (${scorePct}%)</div>
+      <div class="space-y-3">${details}</div>
+      <div class="mt-4 flex gap-3">
+        <button class="px-3 py-2 bg-gray-100 text-blue-900 rounded hover:bg-gray-200" id="retakeQuiz">Retake Quiz</button>
+        <button class="px-3 py-2 bg-white text-blue-900 rounded border hover:bg-gray-50" id="backToCatalog">Back to Catalog</button>
+      </div>
+    `;
+    const retake = document.getElementById('retakeQuiz');
+    if (retake) retake.onclick = () => startQuiz(q.id);
+    const back = document.getElementById('backToCatalog');
+    if (back) back.onclick = renderQuizList;
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  renderQuizList();
+}
+
 // --- Add "AI Jobs" to categories and categoryPages (MUST be before rendering) ---
 if (!categories.some(cat => cat.name === "AI Jobs")) {
   categories.push({
@@ -107,7 +227,6 @@ categoryPages["AI Jobs"] = {
         <option value="Germany">Germany</option>
         <option value="India">India</option>
         <option value="Australia">Australia</option>
-        <!-- Add more countries as needed -->
       </select>
       <button id="ai-jobs-search-btn" class="px-6 py-2 bg-blue-700 text-white font-bold rounded hover:bg-blue-800">Search</button>
     </div>

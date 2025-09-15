@@ -1,5 +1,73 @@
 export const quizzes = [
   {
+    id: 'beginner',
+    title: 'AI Basics – Beginner',
+    level: 'Beginner',
+    description: 'Foundations: what AI can/can’t do, safe use, common terms, and practical tips.',
+    questions: [
+      {
+        q: 'Which description best fits today’s most common AI systems?',
+        options: ['They understand the world like humans do', 'They find patterns in data and predict likely outputs', 'They are conscious and self-aware', 'They always tell the truth'],
+        correctIndex: 1,
+        explanation: 'Modern AI systems learn statistical patterns from data to produce likely outputs; they don’t “understand” like humans.'
+      },
+      {
+        q: 'What is a safe habit when using an AI assistant at work?',
+        options: ['Paste sensitive data into any public tool', 'Share API keys in prompts for convenience', 'Verify important outputs and keep private data private', 'Assume legal/compliance checks are automatic'],
+        correctIndex: 2,
+        explanation: 'Always double-check important results and avoid sharing sensitive data unless your environment is approved and secure.'
+      },
+      {
+        q: 'Which term means “the AI made something up that sounds plausible but is wrong”?',
+        options: ['Grounding', 'Hallucination', 'Regularization', 'Overfitting'],
+        correctIndex: 1,
+        explanation: '“Hallucination” describes confident but incorrect outputs; grounding and citations help reduce this.'
+      },
+      {
+        q: 'What does “prompting” refer to?',
+        options: ['Measuring model accuracy', 'Providing instructions and context to an AI model', 'Compressing a model to run on phones', 'Encrypting data at rest'],
+        correctIndex: 1,
+        explanation: 'Prompting is how you guide the model—clear instructions and examples usually improve results.'
+      },
+      {
+        q: 'Which is a good way to improve AI output quality?',
+        options: ['Give vague instructions to keep it creative', 'Provide clear goals, constraints, and examples', 'Ask multiple unrelated tasks in one prompt', 'Increase temperature for factual tasks'],
+        correctIndex: 1,
+        explanation: 'Be specific about goals and constraints, and show examples; use lower temperature for factual tasks.'
+      },
+      {
+        q: 'Why should you cite or link sources when AI drafts content?',
+        options: ['To make the text longer', 'To pass plagiarism checks automatically', 'To let readers verify claims and reduce misinformation', 'Because links always improve search ranking'],
+        correctIndex: 2,
+        explanation: 'Citations help readers verify claims and reduce the risk of spreading inaccurate information.'
+      },
+      {
+        q: 'Which is true about bias in AI systems?',
+        options: ['AI can’t be biased', 'Bias only appears in images', 'Bias can come from training data and design choices', 'Bias is illegal so models don’t have it'],
+        correctIndex: 2,
+        explanation: 'Bias often comes from data and system design; teams should measure and mitigate it where possible.'
+      },
+      {
+        q: 'What’s a sensible rule for private or regulated information (e.g., patient, student, or financial data)?',
+        options: ['Share it in any AI tool to get better help', 'Use approved tools and follow data handling rules', 'Email exports to yourself for convenience', 'Store keys and secrets in prompts'],
+        correctIndex: 1,
+        explanation: 'Use approved, compliant tools and follow your organization’s data handling policies.'
+      },
+      {
+        q: 'When using AI for ideation, what’s a good approach?',
+        options: ['Ask for many options, then shortlist and refine', 'Only accept the first answer', 'Assume it is always original', 'Skip any human review'],
+        correctIndex: 0,
+        explanation: 'Generate alternatives, then apply human judgment to select and refine the best ideas.'
+      },
+      {
+        q: 'What is “retrieval‑augmented generation” (RAG)?',
+        options: ['Training the model from scratch', 'Grounding model responses in your own documents', 'Compressing a model with pruning', 'Generating images from text prompts only'],
+        correctIndex: 1,
+        explanation: 'RAG fetches relevant documents and uses them to ground responses, improving accuracy and citations.'
+      }
+    ]
+  },
+  {
     id: 'intermediate',
     title: 'AI in Practice – Intermediate',
     level: 'Intermediate',
