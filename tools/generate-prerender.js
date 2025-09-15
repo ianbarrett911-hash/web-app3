@@ -83,12 +83,13 @@ function writeHtml(filePath, html) {
 function generateArticles() {
   articles.forEach((a, idx) => {
     const url = `${siteUrl}/article/${idx}`;
+    const imageUrl = `${siteUrl}/og/article-${idx}.png`;
     const html = buildHtml({
       title: a.title,
       description: a.summary,
       url,
       datePublished: undefined,
-      image: a.image ? `${siteUrl}${a.image}` : undefined
+      image: imageUrl
     });
     const outDir = path.join(publicDir, 'article', String(idx));
     const outPath = path.join(outDir, 'index.html');
@@ -99,12 +100,13 @@ function generateArticles() {
 function generateWeekly() {
   weeklyPosts.forEach((p, idx) => {
     const url = `${siteUrl}/weekly/${idx}`;
+    const imageUrl = `${siteUrl}/og/weekly-${idx}.png`;
     const html = buildHtml({
       title: p.title,
       description: p.summary,
       url,
       datePublished: p.date,
-      image: undefined
+      image: imageUrl
     });
     const outDir = path.join(publicDir, 'weekly', String(idx));
     const outPath = path.join(outDir, 'index.html');

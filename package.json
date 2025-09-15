@@ -5,12 +5,13 @@
   "main": "src/app.js",
   "scripts": {
     "dev": "vite",
-  "prebuild": "npm run generate:sitemap && npm run generate:rss && npm run generate:prerender",
+  "prebuild": "npm run generate:sitemap && npm run generate:rss && npm run generate:og && npm run generate:prerender",
   "build": "vite build",
   "preview": "vite preview --port 5173",
   "generate:pdfs": "node tools/generate-pdfs.js",
   "generate:sitemap": "node tools/generate-sitemap.js",
   "generate:rss": "node tools/generate-rss.js",
+  "generate:og": "node tools/generate-og-images.js",
   "generate:prerender": "node tools/generate-prerender.js"
   },
   "keywords": [],
@@ -25,6 +26,7 @@
   },
   "dependencies": {
     "express": "^5.1.0",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "puppeteer": "^23.4.1"
   }
 }
