@@ -84,7 +84,7 @@ export const categoryPages = {
         </div>
 
         <div class="mt-8">
-          <a href="#" data-category="Medical AI Resources" class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Back to Medical Resources</a>
+          <a href="#" data-category="Medical AI Resources" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Back to Medical Resources</a>
         </div>
       </div>
     </section>
@@ -109,7 +109,7 @@ export const categoryPages = {
           `).join('')}
         </div>
         <div class="mt-6">
-          <button id="backToDashboardFromArchive" class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Back to Dashboard</button>
+          <button id="backToDashboardFromArchive" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Back to Dashboard</button>
         </div>
       </div>
     </section>
@@ -898,7 +898,7 @@ Future: {
                   <option value="parent-comm">Parent communication</option>
                 </select>
                 <div id="school-whatif-help" class="text-xs text-gray-600">You’ll see tiered outcomes (Local AI / AGI / ASI), examples, and a short checklist of preparedness actions.</div>
-                <button type="submit" class="mt-2 bg-blue-700 text-white py-2 rounded font-bold">Show scenario</button>
+                <button type="submit" class="mt-2 bg-blue-700 text-white py-2 rounded-lg font-bold">Show scenario</button>
               </form>
               <div id="schoolWhatIfResult" class="mt-4 p-3 rounded bg-blue-50 border border-blue-200 text-blue-900 hidden fx-fade-expand fx-hidden" tabindex="-1" aria-live="polite"></div>
             </div>
@@ -1026,7 +1026,7 @@ Future: {
                 <option value="hse">Health, safety & wellbeing</option>
               </select>
               <div id="employer-whatif-help" class="text-xs text-gray-600">You’ll see tiered outcomes (Local AI / AGI / ASI), examples, and a short checklist of preparedness actions.</div>
-              <button type="submit" class="mt-2 bg-blue-700 text-white py-2 rounded font-bold">Show scenario</button>
+              <button type="submit" class="mt-2 bg-blue-700 text-white py-2 rounded-lg font-bold">Show scenario</button>
             </form>
             <div id="employerWhatIfResult" class="mt-4 p-3 rounded bg-blue-50 border border-blue-200 text-blue-900 hidden fx-fade-expand fx-hidden" tabindex="-1" aria-live="polite"></div>
           </div>
@@ -1040,7 +1040,7 @@ Future: {
             <li><input type="checkbox" id="ai-check-5"> <label for="ai-check-5">We have a process for staff to raise concerns or suggest improvements</label></li>
             <li><input type="checkbox" id="ai-check-6"> <label for="ai-check-6">We monitor AI system performance and fairness</label></li>
           </ul>
-          <button onclick="window.print()" class="mt-2 px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-800">Print Checklist</button>
+          <button onclick="window.print()" class="mt-2 px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800">Print Checklist</button>
           <h3 class="text-xl font-semibold mt-6 mb-2">Support & Training Links</h3>
           <ul class="list-disc pl-6 mb-2">
             <li><a href="https://www.futurelearn.com/courses/ai-for-business" target="_blank" rel="noopener" class="underline text-blue-700 hover:text-yellow-500">FutureLearn: AI for Business</a></li>
@@ -1117,7 +1117,7 @@ Future: {
             <form id="upskill-form" class="flex flex-col md:flex-row gap-2 mb-2">
               <input type="text" id="upskill-skill" placeholder="Skill to learn (e.g. Excel, Python, project management)" class="border rounded px-2 py-1 flex-1">
               <input type="text" id="upskill-goal" placeholder="Goal (e.g. complete a course, get a certificate)" class="border rounded px-2 py-1 flex-1">
-              <button type="button" onclick="alert('Progress tracking coming soon!')" class="px-3 py-1 bg-blue-700 text-white rounded hover:bg-blue-800">Add</button>
+              <button type="button" onclick="alert('Progress tracking coming soon!')" class="px-3 py-1 bg-blue-700 text-white rounded-lg hover:bg-blue-800">Add</button>
             </form>
             <p class="text-xs text-gray-600">Write down your plan, or use a notes app to track your learning journey.</p>
           </div>
@@ -1135,7 +1135,7 @@ Future: {
               <h3 class="text-xl font-semibold mb-2">CV Builder</h3>
               <p class="text-sm">Create a clean CV quickly — fill the form, preview, then download as a Word/HTML file or print to PDF.</p>
               <div class="mt-3 flex items-center gap-3">
-                <button id="cv-open-builder" class="px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-800">Open CV Builder</button>
+                <button id="cv-open-builder" class="px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800">Open CV Builder</button>
                 <label for="cv-template" class="text-sm font-semibold">Template:</label>
                 <select id="cv-template" class="px-2 py-1 border rounded text-sm">
                   <option value="simple">Simple</option>
@@ -1184,8 +1184,8 @@ Future: {
               </div>
 
               <div class="flex flex-wrap gap-2">
-                <button type="button" id="cv-generate-btn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Generate Preview</button>
-                <button type="button" id="cv-download-docx-btn" class="px-4 py-2 bg-green-700 text-white rounded hover:bg-green-800" disabled>Download .doc</button>
+                <button type="button" id="cv-generate-btn" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Generate Preview</button>
+                <button type="button" id="cv-download-docx-btn" class="px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800" disabled>Download .doc</button>
               </div>
               <p class="mt-3 text-xs text-gray-600">Privacy: Everything is generated in your browser and is not uploaded to any server by default. Downloads are created locally.</p>
             </form>
@@ -1199,9 +1199,9 @@ Future: {
               <h4 class="font-semibold mb-2">Sample CVs</h4>
               <p class="text-sm mb-2">Quick-fill sample CVs for testing and inspiration.</p>
               <div class="flex gap-2 flex-wrap">
-                <button id="sample-junior" class="px-3 py-1 bg-gray-100 rounded">Junior Analyst (sample)</button>
-                <button id="sample-mid" class="px-3 py-1 bg-gray-100 rounded">Product Manager (sample)</button>
-                <button id="sample-tech" class="px-3 py-1 bg-gray-100 rounded">Software Engineer (sample)</button>
+                <button id="sample-junior" class="px-3 py-1 bg-gray-100 rounded-lg">Junior Analyst (sample)</button>
+                <button id="sample-mid" class="px-3 py-1 bg-gray-100 rounded-lg">Product Manager (sample)</button>
+                <button id="sample-tech" class="px-3 py-1 bg-gray-100 rounded-lg">Software Engineer (sample)</button>
               </div>
             </div>
 
@@ -1270,7 +1270,7 @@ Future: {
                 <option value="communications">Communications & media</option>
               </select>
               <div id="gov-whatif-help" class="text-xs text-gray-600">You’ll see tiered outcomes (Local AI / AGI / ASI), concrete examples, and a short checklist of preparedness actions.</div>
-              <button type="submit" class="mt-2 bg-blue-700 text-white py-2 rounded font-bold">Show scenario</button>
+              <button type="submit" class="mt-2 bg-blue-700 text-white py-2 rounded-lg font-bold">Show scenario</button>
             </form>
             <div id="govWhatIfResult" class="mt-4 p-3 rounded bg-blue-50 border border-blue-200 text-blue-900 hidden fx-fade-expand fx-hidden" tabindex="-1" aria-live="polite"></div>
           </div>
@@ -1279,12 +1279,11 @@ Future: {
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-white rounded-xl p-4 shadow">
               <h4 class="font-semibold mb-2">Policy one-pager (short)</h4>
-              <p class="text-sm mb-2">A concise brief you can customise for internal circulation or public consultation.</p>              git config user.name "Your Name"
-              git config user.email "you@example.com"
+              <p class="text-sm mb-2">A concise brief you can customise for internal circulation or public consultation.</p>
               <div class="flex gap-2">
-                <button onclick="gov_copyTemplate('policy-short')" class="px-3 py-1 bg-blue-700 text-white rounded">Copy</button>
-                <button onclick="gov_downloadTemplate('policy-short')" class="px-3 py-1 bg-green-600 text-white rounded">Download</button>
-                <button onclick="gov_emailTemplate('policy-short')" class="px-3 py-1 bg-indigo-600 text-white rounded">Email</button>
+                <button onclick="gov_copyTemplate('policy-short')" class="px-3 py-1 bg-blue-700 text-white rounded-lg">Copy</button>
+                <button onclick="gov_downloadTemplate('policy-short')" class="px-3 py-1 bg-green-600 text-white rounded-lg">Download</button>
+                <button onclick="gov_emailTemplate('policy-short')" class="px-3 py-1 bg-indigo-600 text-white rounded-lg">Email</button>
               </div>
             </div>
 
@@ -1292,9 +1291,9 @@ Future: {
               <h4 class="font-semibold mb-2">Public consultation template</h4>
               <p class="text-sm mb-2">Structured template for engagement and responses.</p>
               <div class="flex gap-2">
-                <button onclick="gov_copyTemplate('consultation')" class="px-3 py-1 bg-blue-700 text-white rounded">Copy</button>
-                <button onclick="gov_downloadTemplate('consultation')" class="px-3 py-1 bg-green-600 text-white rounded">Download</button>
-                <button onclick="gov_emailTemplate('consultation')" class="px-3 py-1 bg-indigo-600 text-white rounded">Email</button>
+                <button onclick="gov_copyTemplate('consultation')" class="px-3 py-1 bg-blue-700 text-white rounded-lg">Copy</button>
+                <button onclick="gov_downloadTemplate('consultation')" class="px-3 py-1 bg-green-600 text-white rounded-lg">Download</button>
+                <button onclick="gov_emailTemplate('consultation')" class="px-3 py-1 bg-indigo-600 text-white rounded-lg">Email</button>
               </div>
             </div>
           </div>
@@ -1310,8 +1309,8 @@ Future: {
               <li id="check-5"><label><input type="checkbox" onchange="gov_toggleChecklistItem('check-5')" /> Allocate transition funding & timeline</label></li>
             </ul>
             <div class="mt-3 flex gap-2">
-              <button onclick="gov_exportChecklist()" class="px-3 py-1 bg-green-600 text-white rounded">Export checklist</button>
-              <button onclick="gov_resetChecklist()" class="px-3 py-1 bg-red-600 text-white rounded">Reset checklist</button>
+              <button onclick="gov_exportChecklist()" class="px-3 py-1 bg-green-600 text-white rounded-lg">Export checklist</button>
+              <button onclick="gov_resetChecklist()" class="px-3 py-1 bg-red-600 text-white rounded-lg">Reset checklist</button>
             </div>
           </div>
 

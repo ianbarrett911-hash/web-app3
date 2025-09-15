@@ -12,7 +12,7 @@ function initEmployeeResourcesPage() {
       function styleLinks(str) {
         return str.replace(
           /<a ([^>]+)>([^<]+)<\/a>/g,
-          "<a $1 class='block w-full text-center px-3 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-800 font-semibold transition' style='text-decoration:none;margin:4px 0;' target='_blank' rel='noopener'>$2</a>"
+          "<a $1 class='block w-full text-center px-3 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-800 font-semibold transition' style='text-decoration:none;margin:4px 0;' target='_blank' rel='noopener'>$2</a>"
         );
       }
       if (val === 'healthcare') html = `<strong>Healthcare:</strong><ul>
@@ -84,7 +84,7 @@ function initMicrolearningPage() {
                 <div class="text-sm text-gray-700">Level: ${q.level}</div>
                 <div class="text-sm text-gray-700">${q.description}</div>
               </div>
-              <button class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700" data-start="${q.id}">Start</button>
+              <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700" data-start="${q.id}">Start</button>
             </div>
           </div>
         `).join('')}
@@ -111,7 +111,7 @@ function initMicrolearningPage() {
           <div class="text-2xl font-bold text-blue-900">${q.title}</div>
           <div class="text-sm text-gray-700">${q.level} \u2022 ${q.questions.length} questions</div>
         </div>
-        <button class="px-3 py-2 bg-gray-100 text-blue-900 rounded hover:bg-gray-200" id="backToList">Back</button>
+  <button class="px-3 py-2 bg-gray-100 text-blue-900 rounded-lg hover:bg-gray-200" id="backToList">Back</button>
       </div>
       <form id="quizForm" class="space-y-6">
         ${q.questions.map((item, idx) => `
@@ -125,8 +125,8 @@ function initMicrolearningPage() {
           </fieldset>
         `).join('')}
         <div class="flex gap-3">
-          <button type="button" class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700" id="submitQuiz">Submit</button>
-          <button type="button" class="px-3 py-2 bg-gray-100 text-blue-900 rounded hover:bg-gray-200" id="resetQuiz">Reset</button>
+          <button type="button" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700" id="submitQuiz">Submit</button>
+          <button type="button" class="px-3 py-2 bg-gray-100 text-blue-900 rounded-lg hover:bg-gray-200" id="resetQuiz">Reset</button>
         </div>
       </form>
       <div id="quizResults" class="mt-6"></div>
@@ -171,8 +171,8 @@ function initMicrolearningPage() {
       <div class="mb-3 text-blue-900 font-bold">Score: ${correct}/${total} (${scorePct}%)</div>
       <div class="space-y-3">${details}</div>
       <div class="mt-4 flex gap-3">
-        <button class="px-3 py-2 bg-gray-100 text-blue-900 rounded hover:bg-gray-200" id="retakeQuiz">Retake Quiz</button>
-        <button class="px-3 py-2 bg-white text-blue-900 rounded border hover:bg-gray-50" id="backToCatalog">Back to Catalog</button>
+  <button class="px-3 py-2 bg-gray-100 text-blue-900 rounded-lg hover:bg-gray-200" id="retakeQuiz">Retake Quiz</button>
+  <button class="px-3 py-2 bg-white text-blue-900 rounded-lg border hover:bg-gray-50" id="backToCatalog">Back to Catalog</button>
       </div>
     `;
     const retake = document.getElementById('retakeQuiz');
@@ -228,7 +228,7 @@ categoryPages["AI Jobs"] = {
         <option value="India">India</option>
         <option value="Australia">Australia</option>
       </select>
-      <button id="ai-jobs-search-btn" class="px-6 py-2 bg-blue-700 text-white font-bold rounded hover:bg-blue-800">Search</button>
+  <button id="ai-jobs-search-btn" class="px-6 py-2 bg-blue-700 text-white font-bold rounded-lg hover:bg-blue-800">Search</button>
     </div>
     <div id="ai-jobs-list" class="space-y-6">
       <div class="text-gray-600">Loading jobs...</div>
@@ -265,7 +265,7 @@ function getArticleQuiz(articleIdx) {
             <label for="q1${i}">${opt}</label>
           </div>
         `).join('')}
-        <button type="submit" class="mt-2 px-4 py-1 bg-blue-700 text-white rounded hover:bg-blue-800">Submit Answer</button>
+  <button type="submit" class="mt-2 px-4 py-1 bg-blue-700 text-white rounded-lg hover:bg-blue-800">Submit Answer</button>
       </form>
       <div id="articleQuizResult" class="mt-3 font-semibold"></div>
     </div>
@@ -445,12 +445,12 @@ document.getElementById('root').innerHTML = `
               <option value="Work">Work & Jobs</option>
               <option value="Superintelligence">Superintelligence</option>
             </select>
-            <button type="submit" class="w-full bg-blue-700 text-white font-bold py-2 rounded hover:bg-blue-800">Get Recommendations</button>
+            <button type="submit" class="w-full bg-blue-700 text-white font-bold py-2 rounded-lg hover:bg-blue-800">Get Recommendations</button>
           </form>
           <div id="quizResult" class="hidden">
             <h3 class="text-lg font-bold mb-2">Recommended Articles:</h3>
             <div id="quizRecommendations"></div>
-            <button id="quizRestart" class="mt-4 px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-800">Restart</button>
+            <button id="quizRestart" class="mt-4 px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800">Restart</button>
           </div>
         </div>
       </div>
@@ -742,7 +742,7 @@ function renderMainContent(page) {
             <option value="inequality">Inequality & Inclusion</option>
             <option value="community">Community & Social Fabric</option>
           </select>
-          <button type="submit" class="mt-2 bg-blue-700 text-white py-2 rounded font-bold">Show Impact</button>
+          <button type="submit" class="mt-2 bg-blue-700 text-white py-2 rounded-lg font-bold">Show Impact</button>
         </form>
         <div id="societyResult" class="mt-4 p-3 rounded bg-blue-50 border border-blue-200 text-blue-900 hidden fx-fade-expand fx-hidden" tabindex="-1" aria-live="polite"></div>
       </div>
@@ -780,7 +780,7 @@ function renderMainContent(page) {
             <option value="arts">Arts & Culture</option>
             <option value="other">Other</option>
           </select>
-          <button type="submit" class="mt-2 bg-blue-700 text-white py-2 rounded font-bold">Find Out</button>
+          <button type="submit" class="mt-2 bg-blue-700 text-white py-2 rounded-lg font-bold">Find Out</button>
         </form>
         <div id="industryCardResult" class="mt-4 p-3 rounded bg-blue-50 border border-blue-200 text-blue-900 hidden fx-fade-expand fx-hidden" tabindex="-1" aria-live="polite"></div>
       </div>
@@ -857,7 +857,7 @@ function initMicrolearningPage() {
                 <div class="text-sm text-gray-700">Level: ${q.level}</div>
                 <div class="text-sm text-gray-700">${q.description}</div>
               </div>
-              <button class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700" data-start="${q.id}">Start</button>
+              <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700" data-start="${q.id}">Start</button>
             </div>
           </div>
         `).join('')}
@@ -882,11 +882,11 @@ function initMicrolearningPage() {
           <div class="text-2xl font-bold text-blue-900">${q.title}</div>
           <div class="text-sm text-gray-700">${q.level} • ${q.questions.length} questions</div>
         </div>
-        <button class="px-3 py-2 bg-gray-100 text-blue-900 rounded hover:bg-gray-200" id="backToList">Back</button>
+  <button class="px-3 py-2 bg-gray-100 text-blue-900 rounded-lg hover:bg-gray-200" id="backToList">Back</button>
       </div>
       <form id="quizForm" class="space-y-6">
         ${q.questions.map((item, idx) => `
-          <fieldset class="p-4 bg-white rounded border">
+          <fieldset class="p-4 bg-white rounded-lg border">
             <legend class="font-semibold text-blue-900 mb-2">Q${idx+1}. ${item.q}</legend>
             ${item.options.map((opt, oi) => `
               <label class="block mb-1">
@@ -938,7 +938,7 @@ function initMicrolearningPage() {
       <div class="space-y-3">${details}</div>
       <div class="mt-4 flex gap-3">
         <button class="px-3 py-2 bg-gray-100 text-blue-900 rounded hover:bg-gray-200" id="retakeQuiz">Retake Quiz</button>
-        <button class="px-3 py-2 bg-white text-blue-900 rounded border hover:bg-gray-50" id="backToCatalog">Back to Catalog</button>
+  <button class="px-3 py-2 bg-white text-blue-900 rounded-lg border hover:bg-gray-50" id="backToCatalog">Back to Catalog</button>
       </div>
     `;
     document.getElementById('retakeQuiz').onclick = () => startQuiz(q.id);
