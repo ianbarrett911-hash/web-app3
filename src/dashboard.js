@@ -306,15 +306,12 @@ setInterval(updateSidebarSingularityCountdown, 60 * 60 * 1000); // update every 
 // --- Render header, sidebar, and empty main content ---
 document.getElementById('root').innerHTML = `
   <div class="min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 flex flex-col font-sans text-gray-900">
-    <!-- Header -->
-    <header class="sticky top-0 z-10 bg-white/95 shadow-lg p-6 flex items-center justify-between" role="banner">
+    <!-- Header (About button removed) -->
+    <header class="sticky top-0 z-10 bg-white/95 shadow-lg p-6 flex items-center" role="banner">
       <div class="flex items-center gap-3">
-  <img src="/assets/logos/mainlogo.png" alt="Site logo" class="w-12 h-12 md:w-14 md:h-14 rounded site-logo" />
+        <img src="/assets/logos/mainlogo.png" alt="Site logo" class="w-12 h-12 md:w-14 md:h-14 rounded site-logo" />
         <h1 class="text-3xl font-extrabold text-blue-900 tracking-tight">Humanity, Society and AI</h1>
       </div>
-      <nav aria-label="Main navigation">
-        <a href="#" class="ml-6 text-blue-900 hover:text-blue-700 font-medium transition-colors focus:outline focus:outline-2 focus:outline-blue-700">About</a>
-      </nav>
     </header>
   <!-- Tech Progress Animation (decorative) -->
   <div id="tech-progress" class="px-6 md:px-12 pt-2" aria-hidden="true">
