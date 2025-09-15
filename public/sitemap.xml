@@ -44,4 +44,12 @@
     <loc>https://humanity-society-ai.com/article/6</loc>
     <priority>0.64</priority>
   </url>
+  <url>
+    <loc>https://humanity-society-ai.com/weekly/0</loc>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>https://humanity-society-ai.com/weekly/1</loc>
+    <priority>0.64</priority>
+  </url>
 </urlset>

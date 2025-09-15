@@ -5,10 +5,12 @@
   "main": "src/app.js",
   "scripts": {
     "dev": "vite",
+  "prebuild": "npm run generate:sitemap && npm run generate:rss",
   "build": "vite build",
   "preview": "vite preview --port 5173",
   "generate:pdfs": "node tools/generate-pdfs.js",
-  "generate:sitemap": "node tools/generate-sitemap.js"
+  "generate:sitemap": "node tools/generate-sitemap.js",
+  "generate:rss": "node tools/generate-rss.js"
   },
   "keywords": [],
   "author": "",

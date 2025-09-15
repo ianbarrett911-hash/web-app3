@@ -7,6 +7,7 @@ const __dirname = path.dirname(__filename);
 
 // Import the articles data
 import { articles } from '../src/data/articles.js';
+import { weeklyPosts } from '../src/data/weeklyArchive.js';
 
 const siteUrl = process.env.SITE_URL || 'https://humanity-society-ai.com';
 const outDir = path.join(__dirname, '..', 'public');
@@ -34,6 +35,12 @@ function generate() {
   // articles by index-based route
   articles.forEach((a, idx) => {
     const loc = `${siteUrl}/article/${idx}`;
+    xml += buildUrl(loc, '0.64');
+  });
+
+  // weekly archive posts by index-based route
+  weeklyPosts.forEach((p, idx) => {
+    const loc = `${siteUrl}/weekly/${idx}`;
     xml += buildUrl(loc, '0.64');
   });
 

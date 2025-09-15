@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/rss.xsl"?>
+<rss version="2.0">
+<channel>
+  <title>Humanity, Society and AI — Weekly Feed</title>
+  <link>https://humanity-society-ai.com/</link>
+  <description>Articles, insights and resources on AI's impact on people, work, and society.</description>
+  <language>en</language>
+  <item>
+    <title>This Week in Medical AI</title>
+    <link>https://humanity-society-ai.com/#weekly</link>
+    <guid>https://humanity-society-ai.com/#weekly</guid>
+    <pubDate>Mon, 15 Sep 2025 10:00:56 GMT</pubDate>
+    <description><![CDATA[
+    <h2 class="text-2xl font-bold mb-2">Medical Technology Is Quietly Getting Great</h2>
+    <p class="italic text-blue-700 mb-4">Estimated reading time: 7 minutes</p>
+    <p class="mb-4">
+      Healthcare doesn’t change overnight—but in 2025, AI is finally delivering pragmatic upgrades
+      patients and clinicians can feel. The biggest improvements are not sci‑fi; they’re the
+      invisible fixes that remove friction, surface risks earlier, and return time to care.
+    </p>
+    <h3 class="text-xl font-semibold mt-6 mb-2">1) Local AI that helps today</h3>
+    <ul class="list-disc pl-6 mb-4">
+      <li><strong>Ambient scribing:</strong> On‑device or private cloud models now draft encounter notes,
+      orders, and patient instructions automatically. Clinicians review and sign—saving 1‑2 hours per day.</li>
+      <li><strong>Imaging triage:</strong> AI flags likely strokes, pneumothorax, PE, and fractures in minutes,
+      prioritizing reads and speeding interventions without replacing radiologists.</li>
+      <li><strong>Risk stratification:</strong> Hospital models watch vitals and labs to predict sepsis,
+      delirium, and readmission—paging teams earlier and reducing length of stay.</li>
+      <li><strong>Patient access:</strong> Chat and voice agents handle refill requests, scheduling,
+      pre‑visit intake, and post‑op FAQs with human handoff on edge cases.</li>
+    </ul>
+    <p class="mb-4">
+      These are narrow models with clear guardrails, audit logs, and clinician oversight. They’re not
+      replacing expertise—they’re removing busywork and catching issues sooner.
+    </p>
+    <h3 class="text-xl font-semibold mt-6 mb-2">2) AGI‑class planning for care pathways</h3>
+    <p class="mb-3">
+      As reasoning models improve, the next leap is <em>care orchestration</em>: systems that can plan,
+      simulate, and coordinate across multi‑month pathways—diabetes, oncology, heart failure—while
+      staying aligned to clinician intent and patient preferences.
+    </p>
+    <ul class="list-disc pl-6 mb-4">
+      <li><strong>Personalized pathways:</strong> Given guidelines, history, and SDOH data, agents propose
+      stepwise plans, verify coverage, book follow‑ups, and adapt as labs and symptoms change.</li>
+      <li><strong>Closed‑loop safety:</strong> Every action is paired with uncertainty estimates,
+      counterfactual checks, and human approval points for high‑risk steps.</li>
+      <li><strong>System‑level gains:</strong> Fewer gaps in care, fewer no‑shows, smoother handoffs,
+      and measurable outcome improvements.</li>
+    </ul>
+    <h3 class="text-xl font-semibold mt-6 mb-2">3) Preparing for superhuman assistance</h3>
+    <p class="mb-3">
+      We don’t need mythical ASI to see risk. As capabilities compound, the right <em>rails</em> matter:
+    </p>
+    <ul class="list-disc pl-6 mb-4">
+      <li><strong>Data governance by default:</strong> Local first where possible, robust PHI controls, and
+      differential privacy for research pipelines.</li>
+      <li><strong>Model governance:</strong> Versioning, monitoring for drift, red‑teaming, and incident
+      response runbooks—treated like clinical quality programs, not side projects.</li>
+      <li><strong>Explainability where it counts:</strong> Not every model needs a thesis, but high‑stakes
+      decisions demand traceable evidence, alternatives, and uncertainty.</li>
+      <li><strong>Human authority:</strong> Clinicians remain accountable. Systems must make it easy to
+      override, appeal, and audit.</li>
+    </ul>
+    <h3 class="text-xl font-semibold mt-6 mb-2">What this means for you</h3>
+    <ul class="list-disc pl-6 mb-4">
+      <li><strong>Patients:</strong> Shorter waits, clearer instructions, fewer repeat visits. Ask your clinic
+      if they offer visit summaries and AI‑assisted follow‑ups.</li>
+      <li><strong>Clinicians:</strong> Start with ambient scribing and inbox automation; measure time saved
+      and error rates. Build toward pathway orchestration with clear outcome goals.</li>
+      <li><strong>Health systems:</strong> Treat AI like an operations upgrade—tie deployments to throughput,
+      safety, and cost metrics. Invest in governance early.</li>
+    </ul>
+    <hr class="my-6 border-indigo-300 opacity-40">
+    <p class="text-sm text-blue-700 mt-4">
+      <strong>Discussion Prompt:</strong> Where would AI save you the most time in a clinical day—or as a patient?
+    </p>
+    <div class="mt-6 p-4 bg-blue-50 rounded border border-blue-200">
+      <div class="font-semibold text-blue-900 mb-2">Further reading</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <div class="text-blue-900 font-semibold mb-1">For Clinicians</div>
+          <ul class="list-disc pl-5 text-sm text-blue-900 space-y-1">
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.ama-assn.org/practice-management/digital/ama-augmented-intelligence-ai-resources" target="_blank" rel="noopener">AMA – Augmented Intelligence (AI) in Healthcare</a></li>
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.ahrq.gov/learning-health-systems/aiml/index.html" target="_blank" rel="noopener">AHRQ – AI & Machine Learning in Health Systems</a></li>
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST – AI Risk Management Framework</a></li>
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-software-medical-device" target="_blank" rel="noopener">FDA – AI/ML Software as a Medical Device (SaMD)</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-blue-900 font-semibold mb-1">For Patients</div>
+          <ul class="list-disc pl-5 text-sm text-blue-900 space-y-1">
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.mayoclinic.org/medical-professionals/center-for-digital-health/artificial-intelligence" target="_blank" rel="noopener">Mayo Clinic – AI in Medicine (overview)</a></li>
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.cancer.gov/news-events/cancer-currents-blog/2023/ai-cancer-research-clinical-care" target="_blank" rel="noopener">NCI – How AI is used in Cancer Care</a></li>
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.healthit.gov/topic/innovations/artificial-intelligence-ai-health-it" target="_blank" rel="noopener">ONC – AI & Health IT (Patient Info)</a></li>
+            <li><a class="underline text-blue-700 hover:text-yellow-600" href="https://www.who.int/news-room/questions-and-answers/item/artificial-intelligence-and-health" target="_blank" rel="noopener">WHO – Q&A: Artificial Intelligence and Health</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  ]]></description>
+  </item>
+  <item>
+    <title>AI and Humans: Coevolution, Collaboration, and Care</title>
+    <link>https://humanity-society-ai.com/weekly/0</link>
+    <guid>https://humanity-society-ai.com/weekly/0</guid>
+    <pubDate>Sat, 13 Sep 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[How human strengths and AI capabilities can meaningfully complement each other—if we design for dignity, safety, and shared prosperity.]]></description>
+  </item>
+  <item>
+    <title>The Biggest Changes Forecast to Come Due to AI</title>
+    <link>https://humanity-society-ai.com/weekly/1</link>
+    <guid>https://humanity-society-ai.com/weekly/1</guid>
+    <pubDate>Sun, 07 Sep 2025 00:00:00 GMT</pubDate>
+    <description><![CDATA[A broad tour of how AI is set to reshape work, healthcare, education, cities, creativity, and governance—highlighting near-term shifts and long-term societal implications.]]></description>
+  </item>
+</channel>
+</rss>
