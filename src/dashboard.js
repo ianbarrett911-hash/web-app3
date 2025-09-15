@@ -1220,133 +1220,64 @@ function initMicrolearningPage() {
             asiEx: ['Global-scale coordination and innovation']
           }
         };
-        // Employer/Employee defaults per industry (used if industry object doesn't override)
+        // Persona guidance defaults per industry: Employer, Employee, and Client
+        // Each contains a short description plus Quick wins, Pitfalls to avoid, and KPIs to track.
         const eeData = {
           healthcare: {
-            employer: 'Prioritize safety, compliance, and clinician time: start with ambient scribing, imaging triage, and RCM automation.',
-            employerEx: ['Pick 2–3 HIPAA-safe pilots with clear ROI', 'Involve clinicians early; provide change management and training'],
-            employee: 'Adopt AI as a co‑pilot: learn prompts for scribing and charting; validate outputs; escalate uncertainties.',
-            employeeEx: ['Use ambient notes but verify diagnoses and codes', 'Track drift/bias; give feedback to improve tools']
+            employer: 'Protect patients and clinicians first; target ambient scribing, imaging triage, and RCM to free up care time.',
+            employerWins: ['Pilot ambient scribe in one clinic', 'Use AI triage to prioritize radiology reads', 'Automate prior auth notes and coding checks'],
+            employerPitfalls: ['Deploying without HIPAA/PHI controls', 'Overloading clinicians with new clicks', 'No change management plan'],
+            employerKpis: ['Note completion time ↓', 'Claim denial rate ↓', 'Clinician satisfaction ↑'],
+            employee: 'Use AI to draft, not decide. Verify diagnoses/codes and escalate uncertainties—your judgment leads.',
+            employeeWins: ['Template prompts for common consults', 'Use summarization for chart review', 'Keep a feedback log of AI errors'],
+            employeePitfalls: ['Copy-paste without reading', 'Sharing PHI in non-approved tools', 'Assuming confidence = correctness'],
+            employeeKpis: ['Time per note ↓', 'Revision rate of AI notes', 'Escalations/resolved issues'],
+            client: 'Expect faster visits and clearer summaries. Ask for transparency on AI use and how your data is protected.',
+            clientWins: ['Receive visit summaries automatically', 'Use portals to clarify next steps'],
+            clientPitfalls: ['Unclear consent for data use', 'Overtrusting automated advice'],
+            clientKpis: ['Patient satisfaction ↑', 'Follow-up compliance ↑']
           },
           finance: {
-            employer: 'Focus on risk and efficiency: fraud/AML, reconciliation, and client service; ensure model governance.',
-            employerEx: ['Define model risk policies and audit trails', 'Automate reconciliations and client comms where low-risk'],
-            employee: 'Use copilots for analysis and documentation; maintain compliance hygiene and escalate anomalies.',
-            employeeEx: ['Leverage templates for KYC/credit memos', 'Keep a review log for any AI-assisted decisions']
+            employer: 'Balance efficiency with governance; start with AML/fraud, reconciliations, and client messaging.',
+            employerWins: ['Graph-based AML alerts with review queue', 'Auto-reconcile low-risk breaks', 'Guided responses for common client asks'],
+            employerPitfalls: ['No model risk policy/audit trail', 'Mixing client data across mandates', 'Shadow IT copilots running wild'],
+            employerKpis: ['Alert precision/recall ↑', 'Break resolution time ↓', 'NPS/CSAT ↑'],
+            employee: 'Let copilots handle drafts and calculations; you own compliance and accuracy.',
+            employeeWins: ['Prompt libraries for KYC and credit memos', 'Explainability notes in workpapers', 'Flag anomalies with examples'],
+            employeePitfalls: ['Unlogged AI changes in docs', 'Sharing MNPI inadvertently', 'Skipping peer review'],
+            employeeKpis: ['Review cycle time ↓', 'Error rates in filings ↓'],
+            client: 'Expect faster insights and clearer reporting. Ask for sources and disclosures on any generated analysis.',
+            clientWins: ['On-demand summaries with cited data', 'Proactive alerts on portfolio changes'],
+            clientPitfalls: ['Opaque black-box outputs', 'Hallucinated benchmarks'],
+            clientKpis: ['Time-to-response ↓', 'Report accuracy complaints ↓']
           },
           education: {
-            employer: 'Reduce admin load and increase personalization; ensure equity and privacy.',
-            employerEx: ['Deploy lesson-planning and grading assistants', 'Provide accessibility tools (caption/translate)'],
-            employee: 'Teachers: co-create materials, differentiate instruction; Students: use tutors responsibly and cite sources.',
-            employeeEx: ['Adapt lesson plans with AI, but align to standards', 'Teach AI literacy and academic integrity']
-          },
-          manufacturing: {
-            employer: 'Start with vision QC, predictive maintenance, and digital twins; measure OEE gains.',
-            employerEx: ['Instrument lines for defect detection', 'Pilot maintenance prediction on critical assets'],
-            employee: 'Upskill on cobot safety, dashboard reading, and root‑cause with AI suggestions.',
-            employeeEx: ['Flag false positives/negatives to tune models', 'Participate in kaizen informed by analytics']
-          },
-          retail: {
-            employer: 'Personalization and forecasting first; optimize pricing and returns; protect brand trust.',
-            employerEx: ['Pilot checkoutless or guided checkout flows', 'Localize merchandising with AI insights'],
-            employee: 'Use assistants for service, merchandising, and ops; learn to interpret demand signals.',
-            employeeEx: ['Answer customer queries with verified product data', 'Give feedback on substitution and planogram quality']
-          },
-          transportation: {
-            employer: 'Improve safety and utilization via routing, telematics, and predictive maintenance.',
-            employerEx: ['Deploy dynamic route planning at hubs', 'Monitor safety KPIs with assistive alerts'],
-            employee: 'Adopt driver aids and fleet tools; report edge cases to improve models.',
-            employeeEx: ['Use navigation co‑pilot and pre‑trip checks', 'Log near‑misses for model retraining']
-          },
-          legal: {
-            employer: 'Accelerate review and drafting with controls for confidentiality and privilege.',
-            employerEx: ['Centralize redline suggestions with human approval', 'Watermark and log AI‑assisted outputs'],
-            employee: 'Use research/drafting copilots; verify citations and maintain client confidentiality.',
-            employeeEx: ['Check case law and quotations', 'Strip sensitive data or use secure workspaces']
-          },
-          agriculture: {
-            employer: 'Adopt precision ag and robotics where ROI is clear; start small and local.',
-            employerEx: ['Trial drone imagery for disease detection', 'Pilot robotic weeding in test plots'],
-            employee: 'Learn sensor/imagery basics and equipment ops; report misclassifications.',
-            employeeEx: ['Tag imagery issues to refine models', 'Maintain field logs with AI summaries']
-          },
-          media: {
-            employer: 'Assist creation and analytics; define provenance/watermarking standards.',
-            employerEx: ['Create guidelines for synthetic media', 'Use analytics to inform content strategy'],
-            employee: 'Use tools for ideation, editing, and tagging; maintain originality and attribution.',
-            employeeEx: ['Keep source/project files organized', 'Cite datasets, music, and models used']
-          },
-          technology: {
-            employer: 'Adopt code/test/security copilots with guardrails; track productivity and quality.',
-            employerEx: ['Add AI checks to CI (secrets, vulns)', 'Measure cycle time, defects, and MTTR'],
-            employee: 'Use AI for scaffolding, tests, and ops; review carefully and document changes.',
-            employeeEx: ['Generate tests from diffs', 'Summarize incidents with linked runbooks']
-          },
-          energy: {
-            employer: 'Forecasting, grid balancing, and maintenance first; ensure safety and compliance.',
-            employerEx: ['Pilot load forecasting for peaks', 'Apply vibration analytics to turbines'],
-            employee: 'Adopt dashboards and alerts; escalate anomalies and document fixes.',
-            employeeEx: ['Annotate false alarms', 'Contribute to playbooks for common faults']
-          },
-          construction: {
-            employer: 'Use site monitoring and schedule optimization; focus on safety and claims reduction.',
-            employerEx: ['Drone/BIM scans for progress and hazards', 'Automate change‑order analysis'],
-            employee: 'Use assistive checklists and AR guidance; report hazards and inaccuracies.',
-            employeeEx: ['Capture photos with consistent angles', 'Flag incorrect drawings or quantities']
-          },
-          hospitality: {
-            employer: 'Optimize pricing, staffing, and service flows; protect guest privacy.',
-            employerEx: ['Forecast staffing per venue/time', 'Use concierge chat for routine requests'],
-            employee: 'Use assistants for guest comms and upsell; respect consent and preferences.',
-            employeeEx: ['Personalize suggestions transparently', 'Log manual overrides to improve flows']
-          },
-          government: {
-            employer: 'Improve citizen service and case throughput with fairness, privacy, and auditability.',
-            employerEx: ['Deploy intake/triage copilots', 'Open model cards and publish metrics'],
-            employee: 'Use tools for document prep and triage; escalate bias or accuracy issues.',
-            employeeEx: ['Maintain case notes with sources', 'Route edge cases to senior reviewers']
-          },
-          realestate: {
-            employer: 'Automate valuation and docs; apply analytics to operations and sustainability.',
-            employerEx: ['Pilot AVM updates and lead scoring', 'Digitize leases and extract terms'],
-            employee: 'Adopt assistants for scheduling, tours, and docs; verify valuations and comps.',
-            employeeEx: ['Cross‑check comps and adjustments', 'Summarize leases with key obligations']
-          },
-          logistics: {
-            employer: 'Route optimization and vision picking; digitize customs and documentation.',
-            employerEx: ['Optimize pick paths in DCs', 'Auto‑generate customs documents'],
-            employee: 'Use scanning and routing tools; report bottlenecks and labeling issues.',
-            employeeEx: ['Capture mis‑scan cases to fix models', 'Propose layout tweaks informed by data']
-          },
-          telecom: {
-            employer: 'Network anomaly detection, predictive maintenance, and customer care automation.',
-            employerEx: ['Deploy NOC dashboards with AI alerts', 'Use assistants in care channels with guardrails'],
-            employee: 'Adopt troubleshooting copilots; keep human in the loop for escalations.',
-            employeeEx: ['Label false positives in alarms', 'Document resolution steps for reuse']
-          },
-          pharma: {
-            employer: 'Accelerate R&D with lab automation and in‑silico design; ensure safety and traceability.',
-            employerEx: ['Automate protocol steps safely', 'Track lineage of data/models/decisions'],
-            employee: 'Use assistants for protocol, notes, and analysis; validate results rigorously.',
-            employeeEx: ['Log conditions and deviations', 'Cross‑validate with orthogonal methods']
-          },
-          sports: {
-            employer: 'Adopt performance analytics and injury prevention; expand fan engagement safely.',
-            employerEx: ['Standardize wearable data pipelines', 'Publish data policies for teams and fans'],
-            employee: 'Use analysis for training and tactics; respect privacy and data rights.',
-            employeeEx: ['Share insights with coaches transparently', 'Opt‑in and review data sharing']
-          },
-          arts: {
-            employer: 'Support creators with assistive tools and clear attribution; protect rights.',
-            employerEx: ['Set provenance and licensing rules', 'Offer AI tool access with training'],
-            employee: 'Use tools for ideation and editing; credit sources and collaborators.',
-            employeeEx: ['Maintain a style and reference library', 'Document AI involvement for clients']
+            employer: 'Cut admin work; improve accessibility and personalization while protecting student data.',
+            employerWins: ['Deploy grading assistants with rubrics', 'Captioning/translation for materials', 'Co-create lesson plans with teachers'],
+            employerPitfalls: ['Lack of data privacy training', 'One-size-fits-all tools', 'No alignment to standards'],
+            employerKpis: ['Teacher admin time ↓', 'IEP/504 compliance ↑', 'Student engagement ↑'],
+            employee: 'Teachers: use AI to differentiate instruction; Students: use tutors to learn, not to shortcut.',
+            employeeWins: ['Personalize practice sets', 'Feedback summaries per student', 'Translate instructions when needed'],
+            employeePitfalls: ['Uncited AI content in assignments', 'Bias in generated examples', 'Ignoring accessibility needs'],
+            employeeKpis: ['Grading turnaround ↓', 'Quality of feedback ↑'],
+            client: 'Parents/students get clearer feedback and accessible materials; expect transparency about AI use in class.',
+            clientWins: ['Weekly progress summaries', 'Multi-language materials on demand'],
+            clientPitfalls: ['Overreliance on generic explanations', 'Privacy uncertainties'],
+            clientKpis: ['Parent satisfaction ↑', 'Completion rates ↑']
           },
           other: {
-            employer: 'Start small: automate repetitive workflows with clear value; establish guardrails early.',
-            employerEx: ['Create an AI use policy and training', 'Measure outcomes and iterate'],
-            employee: 'Use AI to save time on busywork; always review and keep the human decision‑maker in the loop.',
-            employeeEx: ['Build personal prompt libraries', 'Track where AI helps or hurts quality']
+            employer: 'Start where pain is obvious; define guardrails early and measure outcomes.',
+            employerWins: ['Automate a repetitive workflow', 'Create an AI use policy and training', 'Establish review and rollback procedures'],
+            employerPitfalls: ['No human-in-the-loop for decisions', 'Untracked data sharing', 'Launching without pilots'],
+            employerKpis: ['Time saved per task', 'Quality/defect rate', 'Adoption and satisfaction'],
+            employee: 'Use AI to draft, summarize, and check; keep ownership of final quality.',
+            employeeWins: ['Build a personal prompt library', 'Use checklists and compare outputs', 'Log issues to improve tools'],
+            employeePitfalls: ['Sharing sensitive data', 'Accepting first answer', 'Skipping documentation'],
+            employeeKpis: ['Cycle time ↓', 'Rework rate ↓'],
+            client: 'Expect faster service and clearer deliverables; ask providers to explain AI involvement and reviews.',
+            clientWins: ['Readable summaries with sources', 'Faster turnaround with status updates'],
+            clientPitfalls: ['Generic, off-brand outputs', 'Unverified claims'],
+            clientKpis: ['On-time delivery ↑', 'Revision requests ↓']
           }
         };
         const d = impactData[key] || impactData.other;
@@ -1372,12 +1303,23 @@ function initMicrolearningPage() {
           <div class="mb-3">
             <span class="inline-flex items-center gap-1 bg-blue-100 text-blue-800 text-[11px] font-semibold px-2 py-0.5 rounded-full">Employer</span>
             <div class="mt-1"><span class="font-semibold text-blue-700">What to prioritize:</span> ${ee.employer}</div>
-            ${ee.employerEx && ee.employerEx.length ? `<ul class="mt-1 ml-5 list-disc text-[13px] text-blue-900">${ee.employerEx.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}
+            ${ee.employerWins && ee.employerWins.length ? `<div class=\"mt-1 text-[13px] text-blue-900\"><span class=\"font-semibold\">Quick wins:</span><ul class=\"mt-1 ml-5 list-disc\">${ee.employerWins.map(x => `<li>${x}</li>`).join('')}</ul></div>` : ''}
+            ${ee.employerPitfalls && ee.employerPitfalls.length ? `<div class=\"mt-2 text-[13px] text-blue-900\"><span class=\"font-semibold\">Pitfalls:</span><ul class=\"mt-1 ml-5 list-disc\">${ee.employerPitfalls.map(x => `<li>${x}</li>`).join('')}</ul></div>` : ''}
+            ${ee.employerKpis && ee.employerKpis.length ? `<div class=\"mt-2 text-[13px] text-blue-900\"><span class=\"font-semibold\">KPIs:</span><ul class=\"mt-1 ml-5 list-disc\">${ee.employerKpis.map(x => `<li>${x}</li>`).join('')}</ul></div>` : ''}
           </div>
           <div class="mb-2">
             <span class="inline-flex items-center gap-1 bg-pink-100 text-pink-800 text-[11px] font-semibold px-2 py-0.5 rounded-full">Employee</span>
             <div class="mt-1"><span class="font-semibold text-pink-700">How to prepare:</span> ${ee.employee}</div>
-            ${ee.employeeEx && ee.employeeEx.length ? `<ul class="mt-1 ml-5 list-disc text-[13px] text-blue-900">${ee.employeeEx.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}
+            ${ee.employeeWins && ee.employeeWins.length ? `<div class=\"mt-1 text-[13px] text-blue-900\"><span class=\"font-semibold\">Quick wins:</span><ul class=\"mt-1 ml-5 list-disc\">${ee.employeeWins.map(x => `<li>${x}</li>`).join('')}</ul></div>` : ''}
+            ${ee.employeePitfalls && ee.employeePitfalls.length ? `<div class=\"mt-2 text-[13px] text-blue-900\"><span class=\"font-semibold\">Pitfalls:</span><ul class=\"mt-1 ml-5 list-disc\">${ee.employeePitfalls.map(x => `<li>${x}</li>`).join('')}</ul></div>` : ''}
+            ${ee.employeeKpis && ee.employeeKpis.length ? `<div class=\"mt-2 text-[13px] text-blue-900\"><span class=\"font-semibold\">KPIs:</span><ul class=\"mt-1 ml-5 list-disc\">${ee.employeeKpis.map(x => `<li>${x}</li>`).join('')}</ul></div>` : ''}
+          </div>
+          <div class="mb-2">
+            <span class="inline-flex items-center gap-1 bg-teal-100 text-teal-800 text-[11px] font-semibold px-2 py-0.5 rounded-full">Client</span>
+            <div class="mt-1"><span class="font-semibold text-teal-700">What to expect / ask for:</span> ${ee.client}</div>
+            ${ee.clientWins && ee.clientWins.length ? `<div class=\"mt-1 text-[13px] text-blue-900\"><span class=\"font-semibold\">Quick wins:</span><ul class=\"mt-1 ml-5 list-disc\">${ee.clientWins.map(x => `<li>${x}</li>`).join('')}</ul></div>` : ''}
+            ${ee.clientPitfalls && ee.clientPitfalls.length ? `<div class=\"mt-2 text-[13px] text-blue-900\"><span class=\"font-semibold\">Pitfalls:</span><ul class=\"mt-1 ml-5 list-disc\">${ee.clientPitfalls.map(x => `<li>${x}</li>`).join('')}</ul></div>` : ''}
+            ${ee.clientKpis && ee.clientKpis.length ? `<div class=\"mt-2 text-[13px] text-blue-900\"><span class=\"font-semibold\">KPIs:</span><ul class=\"mt-1 ml-5 list-disc\">${ee.clientKpis.map(x => `<li>${x}</li>`).join('')}</ul></div>` : ''}
           </div>
           ${d.linkCategory ? `<div class="mt-3"><a href="#" data-category="${d.linkCategory}" class="inline-flex items-center gap-1 text-blue-800 underline hover:text-yellow-500">Explore related: ${d.linkCategory} <span aria-hidden=\"true\">→</span></a></div>` : ''}
         `;
