@@ -3,16 +3,19 @@
   "version": "1.0.0",
   "description": "A basic web application that can be iteratively improved.",
   "main": "src/app.js",
+  "type": "module",
+  
   "scripts": {
     "dev": "vite",
-  "prebuild": "npm run generate:sitemap && npm run generate:rss && npm run generate:og && npm run generate:prerender",
+  "prebuild": "npm run generate:sitemap && npm run generate:og && npm run generate:prerender && npm run generate:social",
   "build": "vite build",
   "preview": "vite preview --port 5173",
   "generate:pdfs": "node tools/generate-pdfs.js",
   "generate:sitemap": "node tools/generate-sitemap.js",
   "generate:rss": "node tools/generate-rss.js",
   "generate:og": "node tools/generate-og-images.js",
-  "generate:prerender": "node tools/generate-prerender.js"
+  "generate:prerender": "node tools/generate-prerender.js",
+  "generate:social": "node tools/generate-social.js"
   },
   "keywords": [],
   "author": "",
