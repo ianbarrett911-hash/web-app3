@@ -1,6 +1,18 @@
 import { weeklyPosts } from './weeklyArchive.js';
 
 export const categoryPages = {
+"AI Microlearning": {
+  title: "AI Microlearning – Quizzes",
+  content: `
+    <section class="mb-10" aria-labelledby="microlearning-title">
+      <div class="rounded-3xl bg-white/95 shadow-2xl p-8">
+        <h2 id="microlearning-title" class="text-3xl font-extrabold text-blue-900 mb-4">AI Microlearning</h2>
+        <p class="text-blue-900 mb-4">Short, role‑relevant quizzes. Start at Intermediate and progress to Advanced. Each quiz has 10 questions with explanations for any missed items.</p>
+        <div id="microlearning-root" class="mt-4"></div>
+      </div>
+    </section>
+  `
+},
 "Medical AI Resources": {
   title: "Medical AI Resources – Clinicians & Patients",
   content: `

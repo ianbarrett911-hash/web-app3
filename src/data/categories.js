@@ -64,4 +64,9 @@ export const categories = [
     name: "Medical AI Resources",
     icon: `<svg class="w-5 h-5 mr-2 inline text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 7v10M7 12h10" stroke-linecap="round" stroke-linejoin="round"></path></svg>`
   }
+  ,
+  {
+    name: "AI Microlearning",
+    icon: `<svg class="w-5 h-5 mr-2 inline text-indigo-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 14v7" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5 19h14" stroke-linecap="round" stroke-linejoin="round"></path></svg>`
+  }
 ];
