@@ -87,7 +87,8 @@ function main() {
 
   // Weekly posts
   weeklyPosts.forEach((p, i) => {
-    const link = `${siteUrl}/weekly/${i}?utm_source=twitter&utm_medium=social&utm_campaign=weekly_${i}`;
+    const seg = p.slug ? p.slug : String(i);
+    const link = `${siteUrl}/weekly/${seg}?utm_source=twitter&utm_medium=social&utm_campaign=weekly_${i}`;
     const img = `${siteUrl}/og/weekly-${i}.png`;
     const baseTags = ['#AI', '#AIWeekly', '#AIInsights'];
     const tags = maybeAddContextTags(p.title, baseTags);

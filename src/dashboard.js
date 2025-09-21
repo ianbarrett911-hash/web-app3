@@ -251,8 +251,9 @@ function getShareLinks(articleIdx) {
 
 // Share links for weekly posts
 function getWeeklyShareLinks(weeklyIdx) {
-  const url = encodeURIComponent(window.location.origin + `/weekly/${weeklyIdx}`);
   const post = weeklyPosts[weeklyIdx];
+  const path = post?.slug ? `/weekly/${post.slug}` : `/weekly/${weeklyIdx}`;
+  const url = encodeURIComponent(window.location.origin + path);
   const title = encodeURIComponent(post?.title || 'Weekly AI Insights');
   return {
     twitter: `https://twitter.com/intent/tweet?url=${url}&text=${title}`,
@@ -475,7 +476,7 @@ function closeSharedArticleModal() {
   articleModal.classList.add('hidden');
   releaseFocus(articleModal);
   const path = window.location.pathname;
-  if (/^\/article\/(\d+)/.test(path) || /^\/weekly\/(\d+)/.test(path)) {
+  if (/^\/article\/(\d+)/.test(path) || /^\/weekly\/(?:[a-z0-9\-]+|\d+)/.test(path)) {
     history.pushState({}, '', '/');
   }
   document.title = "Humanity, Society and AI";
@@ -494,6 +495,8 @@ function closeSharedArticleModal() {
   resetMetaProperty('og:url', window.location.origin + '/');
   resetMetaName('twitter:title', 'Humanity, Society and AI');
   resetMetaName('twitter:description', 'Articles, insights and resources on the impact of AI on work and human life.');
+  const metaKeywords = document.querySelector('meta[name="keywords"]');
+  if (metaKeywords) metaKeywords.content = '';
   const canonical = document.querySelector('link[rel="canonical"]');
   if (canonical) canonical.href = window.location.origin + '/';
 }
@@ -835,17 +838,8 @@ function renderMainContent(page) {
 const readWeeklyArticle = document.getElementById('readWeeklyArticle');
 if (readWeeklyArticle) {
   readWeeklyArticle.addEventListener('click', () => {
-    const articleModal = document.getElementById('articleModal');
-    const articleModalTitle = document.getElementById('articleModalTitle');
-    const articleModalContent = document.getElementById('articleModalContent');
-    articleModalTitle.textContent = weeklyBlog.title;
-    const weeklyDateStr = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-    articleModalContent.innerHTML = `<p class="text-sm text-blue-700 mb-2">${weeklyDateStr}</p>` + weeklyBlog.fullArticle;
-    articleModal.classList.remove('hidden');
-    articleModal.__lastOpener = readWeeklyArticle;
-    (articleModalTitle || document.getElementById('closeArticleModal')).focus();
-    trapFocus(articleModal);
-    // Rely on global closeSharedArticleModal binding for the close button and Escape key
+    // Open the most recent weekly (index 0) with full URL + meta updates
+    openWeeklyModal(0, readWeeklyArticle);
   });
 }
 
@@ -2095,30 +2089,37 @@ function openWeeklyModal(idx, openerEl) {
   trapFocus(articleModal);
 
   // Update URL and meta tags (weekly route)
-  history.pushState({ weekly: idx }, '', `/weekly/${idx}`);
+  const weeklyPath = post?.slug ? `/weekly/${post.slug}` : `/weekly/${idx}`;
+  history.pushState({ weekly: idx }, '', weeklyPath);
   document.title = `${post.title} | Humanity, Society and AI`;
   let metaDesc = document.querySelector('meta[name="description"]');
   if (!metaDesc) { metaDesc = document.createElement('meta'); metaDesc.name = 'description'; document.head.appendChild(metaDesc); }
-  metaDesc.content = post.summary || '';
+  metaDesc.content = post.metaDescription || post.summary || '';
+  // Meta keywords (SEO)
+  if (post.keywords && Array.isArray(post.keywords) && post.keywords.length) {
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) { metaKeywords = document.createElement('meta'); metaKeywords.name = 'keywords'; document.head.appendChild(metaKeywords); }
+    metaKeywords.content = post.keywords.join(', ');
+  }
   const setMetaProperty = (prop, value) => {
     let el = document.querySelector(`meta[property="${prop}"]`);
     if (!el) { el = document.createElement('meta'); el.setAttribute('property', prop); document.head.appendChild(el); }
     el.content = value || '';
   };
   setMetaProperty('og:title', post.title);
-  setMetaProperty('og:description', post.summary || '');
-  setMetaProperty('og:url', window.location.origin + `/weekly/${idx}`);
+  setMetaProperty('og:description', post.metaDescription || post.summary || '');
+  setMetaProperty('og:url', window.location.origin + weeklyPath);
   const setMetaName = (name, value) => {
     let el = document.querySelector(`meta[name="${name}"]`);
     if (!el) { el = document.createElement('meta'); el.setAttribute('name', name); document.head.appendChild(el); }
     el.content = value || '';
   };
   setMetaName('twitter:title', post.title);
-  setMetaName('twitter:description', post.summary || '');
+  setMetaName('twitter:description', post.metaDescription || post.summary || '');
   // Canonical
   let canonical = document.querySelector('link[rel="canonical"]');
   if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
-  canonical.href = window.location.origin + `/weekly/${idx}`;
+  canonical.href = window.location.origin + weeklyPath;
 }
 
 // --- Quiz modal close "×" button logic ---
@@ -2201,13 +2202,18 @@ setTimeout(() => {
 window.addEventListener('popstate', (event) => {
   const path = window.location.pathname;
   const matchArticle = path.match(/^\/article\/(\d+)/);
-  const matchWeekly = path.match(/^\/weekly\/(\d+)/);
+  const matchWeeklyIndex = path.match(/^\/weekly\/(\d+)/);
+  const matchWeeklySlug = path.match(/^\/weekly\/([a-z0-9\-]+)/);
   if (matchArticle) {
     const idx = matchArticle[1];
     openArticleModal(idx, null);
-  } else if (matchWeekly) {
-    const idx = matchWeekly[1];
+  } else if (matchWeeklyIndex) {
+    const idx = matchWeeklyIndex[1];
     openWeeklyModal(idx, null);
+  } else if (matchWeeklySlug) {
+    const slug = matchWeeklySlug[1];
+    const idx = weeklyPosts.findIndex(p => p.slug === slug);
+    if (idx >= 0) openWeeklyModal(idx, null);
   } else {
     // Close modal and reset meta tags
     const articleModal = document.getElementById('articleModal');

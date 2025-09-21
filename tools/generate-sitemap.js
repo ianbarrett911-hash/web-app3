@@ -40,7 +40,8 @@ function generate() {
 
   // weekly archive posts by index-based route
   weeklyPosts.forEach((p, idx) => {
-    const loc = `${siteUrl}/weekly/${idx}`;
+    const seg = p.slug ? p.slug : String(idx);
+    const loc = `${siteUrl}/weekly/${seg}`;
     xml += buildUrl(loc, '0.64');
   });
 

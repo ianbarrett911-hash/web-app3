@@ -23,7 +23,7 @@ function escapeHtml(str = '') {
     .replace(/"/g, '&quot;');
 }
 
-function buildHtml({ title, description, url, datePublished, image }) {
+function buildHtml({ title, description, url, datePublished, image, keywords }) {
   const safeTitle = escapeHtml(title || 'Humanity, Society and AI');
   const safeDesc = escapeHtml(description || 'Articles, insights and resources on AI\'s impact on people, work, and society.');
   const ogImage = image || `${siteUrl}/assets/logos/mainlogo.png`;
@@ -50,6 +50,7 @@ function buildHtml({ title, description, url, datePublished, image }) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>${safeTitle} | Humanity, Society and AI</title>
     <meta name="description" content="${safeDesc}" />
+    ${keywords && keywords.length ? `<meta name="keywords" content="${escapeHtml(keywords.join(', '))}" />` : ''}
     <link rel="canonical" href="${url}" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="${safeTitle}" />
@@ -82,7 +83,7 @@ function writeHtml(filePath, html) {
 
 function generateArticles() {
   articles.forEach((a, idx) => {
-    const url = `${siteUrl}/article/${idx}`;
+    const url = `${siteUrl}/article/${idx}`; // articles not slugged yet
     const imageUrl = `${siteUrl}/og/article-${idx}.png`;
     const html = buildHtml({
       title: a.title,
@@ -99,16 +100,18 @@ function generateArticles() {
 
 function generateWeekly() {
   weeklyPosts.forEach((p, idx) => {
-    const url = `${siteUrl}/weekly/${idx}`;
+    const seg = p.slug ? p.slug : String(idx);
+    const url = `${siteUrl}/weekly/${seg}`;
     const imageUrl = `${siteUrl}/og/weekly-${idx}.png`;
     const html = buildHtml({
       title: p.title,
-      description: p.summary,
+      description: p.metaDescription || p.summary,
       url,
       datePublished: p.date,
-      image: imageUrl
+      image: imageUrl,
+      keywords: p.keywords
     });
-    const outDir = path.join(publicDir, 'weekly', String(idx));
+    const outDir = path.join(publicDir, 'weekly', seg);
     const outPath = path.join(outDir, 'index.html');
     writeHtml(outPath, html);
   });
